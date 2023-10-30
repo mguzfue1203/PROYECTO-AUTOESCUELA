@@ -1,7 +1,7 @@
 <?php
 
 function conexionBD(){
-    $direccionbd = "localhost:3305";
+    $direccionbd = "localhost";
     $usuariobd = "root";
     $contrasenabd = "12345";
     $nombrebd = "autoescuela";
@@ -15,9 +15,9 @@ function conexionBD(){
         
     } 
     
-    catch (PDOException $e) {
+    catch (PDOException $evento) {
 
-        echo 'Error al conectarse a la base de datos: ' . $e->getMessage();
+        echo 'Error al conectarse a la base de datos'; //. $evento->getMessage();
         die();
 
     }
