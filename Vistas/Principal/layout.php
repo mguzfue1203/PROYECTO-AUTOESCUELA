@@ -9,21 +9,20 @@
     <link rel="stylesheet" href="./css/styles.css">
     </script>
 </head>
-
 <body>
     <?php
-        require_once './Vistas/Principal/header.php';
+        require_once 'header.php';
     ?>
     <section>
         <div id="cuerpo">
         <?php
-           require_once './Vistas/Principal/enruta.php';
+        require_once 'enruta.php';
         ?>
         </div>
     </section>
 
     <?php
-        require_once './Vistas/Principal/footer.php';
+        require_once 'footer.php';
     ?>
 
 </body>

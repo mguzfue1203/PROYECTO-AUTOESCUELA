@@ -5,6 +5,7 @@ class usuario {
 
     private $id;
     private $nombre;
+    private $dni;
     private $apellidos;
     private $fechanacimiento;
     private $contrasena;
@@ -13,8 +14,9 @@ class usuario {
 
 
 
-public function __construct($nombre, $apellidos, $fechanacimiento, $contrasena, $email, $rol){
+public function __construct($nombre, $dni, $apellidos, $fechanacimiento, $contrasena, $email, $rol){
     $this -> nombre = $nombre;
+    $this -> dni = $dni;
     $this -> apellidos = $apellidos;
     $this -> fechanacimiento = $fechanacimiento;
     $this -> contrasena = $contrasena;
@@ -40,9 +42,17 @@ public function __construct($nombre, $apellidos, $fechanacimiento, $contrasena, 
     }
 
     public function setnombre($nombre){
-        $this -> id = $nombre;
+        $this -> nombre = $nombre;
+    }
+//-------------------------------------------------------
+
+    public function getdni(){
+        return $this -> dni;
     }
 
+    public function setdni($dni){
+        $this -> dni = $dni;
+    }
 //-------------------------------------------------------
 
     public function getapellidos(){

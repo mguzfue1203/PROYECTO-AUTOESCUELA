@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $recuerdame = isset($_POST['recuerdame']);
             Login::identifica($usuario, $contrasena, $recuerdame);
             
-            header('Location: ../Mantenimiento/mantenimiento.php');
+            header('Location: ../Principal/layout.php');
             exit;
         } else {
             $mensajedeerror = 'Usuario o contraseña incorrectos, revisa los campos y vuelve a intentarlo.';
