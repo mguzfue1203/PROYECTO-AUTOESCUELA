@@ -1,5 +1,9 @@
 <?php
-require_once '../../helper/login.php';
+require_once './helper/login.php';
+if (Login::usuarioestalogueado()) {
+    header("Location: ./index.php?menu=inicio");
+    exit;
+}
 $mensajedeerror = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
@@ -10,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $recuerdame = isset($_POST['recuerdame']);
             Login::identifica($usuario, $contrasena, $recuerdame);
             
-            header('Location: ../Principal/layout.php');
+            header('Location: ./index.php?menu=tests');
+            
             exit;
         } else {
             $mensajedeerror = 'Usuario o contraseña incorrectos, revisa los campos y vuelve a intentarlo.';

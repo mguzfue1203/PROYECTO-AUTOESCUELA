@@ -1,20 +1,4 @@
-<?php
-require_once '../../helper/login.php';
-if (!Login::usuarioestalogueado()) {
-    header("Location: ../Login/autentifica.php");
-    exit;
-}
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>HOLA</p>
-</body>
-</html>
+<h1>Bienvenido a la página de inicio</h1>
+    <p>Esta es la página de inicio </p>
+    <a href='index.php?menu=prueba'>Ir a la página de Prueba</a>
+    <a href='index.php?menu=autentifica'>Ir a la página de login</a>

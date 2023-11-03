@@ -80,7 +80,7 @@ public function __construct($nombre, $dni, $apellidos, $fechanacimiento, $contra
     }
 
     public function setcontrasena($contrasena){
-        $this -> contrasena = $contrasena;
+        $this -> contrasena = md5($contrasena);
     }
 
 //-------------------------------------------------------

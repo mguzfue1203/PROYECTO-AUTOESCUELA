@@ -1,7 +1,7 @@
 <header>
 
             <div>
-                <p>hola</p>
+                <p>Este es el Header de la página web.</p>
 
             </div>
     </header>
