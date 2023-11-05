@@ -1,4 +1,5 @@
 <?php
+//--REQUIRES-------------------------------
 require_once './helper/login.php';
 //Si el usuario no está logueado nos redirigirá al inicio.
 if (!Login::usuarioestalogueado()) {
@@ -7,7 +8,10 @@ if (!Login::usuarioestalogueado()) {
 }
 
 ?>
-
+<!--BODY-->
 <h1>Página de Tests</h1>
 <p>Esta es la página de Tests.</p>
 <a href='index.php?menu=inicio'>Ir a la página de inicio</a>
+<form action="index.php?menu=logout" method="post">
+    <input type="submit" value="Cerrar Sesión">
+    </form>

@@ -8,7 +8,7 @@ class GBD
         // Miramos si ya tenemos una conexión establecida
         if (self::$conexion === null) {
             // Configuramos la conexión
-            $servidorbd = 'localhost:3305';
+            $servidorbd = 'localhost:3306';
             $usuariobd = 'root';
             $contrasenabd = '12345';
             $nombrebd = 'autoescuela';

@@ -2,7 +2,7 @@
 class Sesion{
     
     public static function iniciar(){
-        if(!isset($_SESSION)){
+        if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
     }
