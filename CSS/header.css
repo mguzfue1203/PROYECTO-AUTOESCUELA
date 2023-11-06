@@ -1,0 +1,12 @@
+header{
+    
+    width: 100vw;
+    height: 100px;
+    margin: 0px;
+    background-color: aqua;
+
+}
+header p{
+
+    text-align: center;
+}

@@ -31,12 +31,12 @@ public function __construct($nombre, $dni, $apellido1, $apellido2, $fechanacimie
 //Aunque no es lo más adecuado, he añadido la lógica del usuario en la propia clase usuario.
 //Añado un par de funciones, comparten gran parte del código pero la primera verifica únicamente si existe el usuario y devuelve booleano, y la otra obtiene al usuario y devuelve una instancia del mismo.
 
-public static function existeusuario($nombre, $contrasena) {
+public static function existeusuario($dni, $contrasena) {
     $conexion = GBD::obtenerlaconexion();   //Establezco la conexión con la base de datos a través de la clase gbd.
-    $consulta = "SELECT * FROM USUARIO WHERE NOMBRE = ? AND CONTRASENA = ?";    //Almaceno la consulta a la base de datos en la variable consulta para usarla en la sentencia.
+    $consulta = "SELECT * FROM USUARIO WHERE DNI = ? AND CONTRASENA = MD5(?)";    //Almaceno la consulta a la base de datos en la variable consulta para usarla en la sentencia. Descifro el MD5.
 
     $sentenciabd = $conexion -> prepare($consulta); //Preparo una sentencia donde utilizamos la conexion y la consulta.
-    $sentenciabd -> bind_param("ss", $nombre, $contrasena); //Enlazamos los valores que recibimos a la consulta de la base de datos por orden, cada s representa un valor de tipo cadena.
+    $sentenciabd -> bind_param("ss", $dni, $contrasena); //Enlazamos los valores que recibimos a la consulta de la base de datos por orden, cada s representa un valor de tipo cadena.
 
     if ($sentenciabd -> execute()) {    //Ejecutamos la sentencia, y almacenamos el resultado en memorial local, si el número de campos devueltos es mayor a 0, se ha encontrado el usuario.
         $sentenciabd -> store_result();
@@ -48,13 +48,13 @@ public static function existeusuario($nombre, $contrasena) {
 
 //-------------------------------------------------------
 
-public static function obtenerdatosusuario($nombre, $contrasena) {
+public static function obtenerdatosusuario($dni, $contrasena) {
 
     $conexion = GBD::obtenerlaconexion();   //Establezco la conexión con la base de datos a través de la clase gbd.
-    $consulta = "SELECT * FROM USUARIO WHERE NOMBRE = ? AND CONTRASENA = ?";    //Almaceno la consulta a la base de datos en la variable consulta para usarla en la sentencia.
+    $consulta = "SELECT * FROM USUARIO WHERE DNI = ? AND CONTRASENA = MD5(?)";    //Almaceno la consulta a la base de datos en la variable consulta para usarla en la sentencia. Descifro el MD5.
 
     $sentenciabd = $conexion->prepare($consulta);   //Preparo una sentencia donde utilizamos la conexion y la consulta.
-    $sentenciabd->bind_param("ss", $nombre, $contrasena);   //Enlazamos los valores que recibimos a la consulta de la base de datos por orden, cada s representa un valor de tipo cadena.
+    $sentenciabd->bind_param("ss", $dni, $contrasena);   //Enlazamos los valores que recibimos a la consulta de la base de datos por orden, cada s representa un valor de tipo cadena.
 
     if ($sentenciabd->execute()) {  //Ejecutamos la sentencia, y recogemos el resultado de la memorial local, si el número de campos devueltos es mayor a 0, extraemos los datos de la primera fila, y creamos una instancia de la clase usuario con esos datos.
         $resultado = $sentenciabd->get_result();
@@ -159,15 +159,4 @@ public static function obtenerdatosusuario($nombre, $contrasena) {
 }
 
 //-------------------------------------------------------
-/*public function guardar() {
-
-    $conexion = GBD::obtenerlaconexion();
-    $consulta = "INSERT INTO USUARIO (NOMBRE, DNI, APELLIDO1, APELLIDO2, FECHANACIMIENTO, CONTRASENA, EMAIL, ROL) VALUES (?, ?, ?, ?, ?, ?, ?, usuario)";//Le doy valor predeterminado a el rol como usuario, tal y como se solicita en el documento.
-    
-    $sentenciabd = $conexion->prepare($consulta);
-    $sentenciabd->bind_param("ssssssss", $this->nombre, $this->dni, $this->apellido1, $this->apellido2, $this->fechanacimiento, $this->contrasena, $this->email, $this->rol);
-
-    return $sentenciabd->execute();
-}
-}*/
 ?>

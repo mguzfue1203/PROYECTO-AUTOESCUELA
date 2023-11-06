@@ -3,7 +3,8 @@ class Principal
 {
     public static function main()
     {
-        //require_once'./helper/sesion.php';
+        //require_once ('./cargadores/Autocargador.php');
+        //Autocargador::autocargar();
         require_once './Vistas/Principal/layout.php';
     }
 }

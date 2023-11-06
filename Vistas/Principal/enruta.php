@@ -25,7 +25,7 @@ if (isset($_GET['menu'])) {
     }
     else {
         // Si no encuentra ninguna de estas opciones redirige a página no encontrada
-        //require_once 'noencontrada.php';
+        require_once './Vistas/Contenido/noencontrada.php';
     }
 } else {
     //Si no le damos ninguna opción por defecto redirigirá al inicio de la web.

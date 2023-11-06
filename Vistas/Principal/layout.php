@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AUTOESCUELA</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/login.css">
+    <link rel="stylesheet" href="CSS/footer.css">
     <script src="JS/script.js"></script>
 </head>
 <body>
@@ -16,6 +18,7 @@
     <section>
         <div>
         <?php
+        
         require_once 'enruta.php';
         ?>
         </div>
