@@ -1,7 +1,7 @@
 <?php
 class GBD
 {
-    private static $conexion;
+    /*private static $conexion;
     
     public static function obtenerlaconexion()
     {
@@ -20,6 +20,21 @@ class GBD
             }
         }
 
-        return self::$conexion;
+        return self::$conexion;*/
+
+        public static function obtenerlaconexion(){
+            try {
+    
+                $conexion = new PDO("mysql:host=localhost:3306;dbname=autoescuela", "root", "12345");
+    
+            }
+            catch (PDOException $error) {
+    
+                echo 'Hay un error en la conexión con la base de datos, revisa tu configuración:'. $error -> getMessage();
+    
+            }
+            return $conexion;
+        }
+
+
     }
-}

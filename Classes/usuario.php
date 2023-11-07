@@ -32,41 +32,87 @@ public function __construct($nombre, $dni, $apellido1, $apellido2, $fechanacimie
 //Añado un par de funciones, comparten gran parte del código pero la primera verifica únicamente si existe el usuario y devuelve booleano, y la otra obtiene al usuario y devuelve una instancia del mismo.
 
 public static function existeusuario($dni, $contrasena) {
-    $conexion = GBD::obtenerlaconexion();   //Establezco la conexión con la base de datos a través de la clase gbd.
-    $consulta = "SELECT * FROM USUARIO WHERE DNI = ? AND CONTRASENA = MD5(?)";    //Almaceno la consulta a la base de datos en la variable consulta para usarla en la sentencia. Descifro el MD5.
+    $conexion = GBD::obtenerlaconexion(); // Obtenemos la conexión a la base de datos a través de la clase GBD.
+    $consulta = "SELECT * FROM USUARIO WHERE DNI = :dni AND CONTRASENA = MD5(:contrasena)";
 
     $sentenciabd = $conexion -> prepare($consulta); //Preparo una sentencia donde utilizamos la conexion y la consulta.
-    $sentenciabd -> bind_param("ss", $dni, $contrasena); //Enlazamos los valores que recibimos a la consulta de la base de datos por orden, cada s representa un valor de tipo cadena.
 
-    if ($sentenciabd -> execute()) {    //Ejecutamos la sentencia, y almacenamos el resultado en memorial local, si el número de campos devueltos es mayor a 0, se ha encontrado el usuario.
-        $sentenciabd -> store_result();
-        return $sentenciabd -> num_rows > 0;
+    $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);    //Enlazamos los valores que recibimos a la consulta de la base de datos.
+    $sentenciabd -> bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
+
+    if ($sentenciabd -> execute()) {    
+        
+        return $sentenciabd -> rowCount() > 0; //Ejecutamos la sentencia, si el número de campos es mayor a 0, ha encontrado usuario, devolvemos true, si no.
     }
-
-    return false;
+    
+    return false; //Si la consulta no funciona, devolvemos false.
 }
+
 
 //-------------------------------------------------------
 
 public static function obtenerdatosusuario($dni, $contrasena) {
+    $conexion = GBD::obtenerlaconexion();   
+    $consulta = "SELECT * FROM USUARIO WHERE DNI = :dni AND CONTRASENA = MD5(:contrasena)";
 
-    $conexion = GBD::obtenerlaconexion();   //Establezco la conexión con la base de datos a través de la clase gbd.
-    $consulta = "SELECT * FROM USUARIO WHERE DNI = ? AND CONTRASENA = MD5(?)";    //Almaceno la consulta a la base de datos en la variable consulta para usarla en la sentencia. Descifro el MD5.
+    $sentenciabd = $conexion->prepare($consulta);
 
-    $sentenciabd = $conexion->prepare($consulta);   //Preparo una sentencia donde utilizamos la conexion y la consulta.
-    $sentenciabd->bind_param("ss", $dni, $contrasena);   //Enlazamos los valores que recibimos a la consulta de la base de datos por orden, cada s representa un valor de tipo cadena.
+    $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);
+    $sentenciabd -> bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
 
-    if ($sentenciabd->execute()) {  //Ejecutamos la sentencia, y recogemos el resultado de la memorial local, si el número de campos devueltos es mayor a 0, extraemos los datos de la primera fila, y creamos una instancia de la clase usuario con esos datos.
-        $resultado = $sentenciabd->get_result();
-        if ($resultado->num_rows > 0) {
-            $fila = $resultado->fetch_assoc();
-            return new Usuario($fila['NOMBRE'], $fila['DNI'], $fila['APELLIDO1'], $fila['APELLIDO2'], $fila['FECHANACIMIENTO'], $fila['CONTRASENA'], $fila['EMAIL'], $fila['ROL']);
+    if ($sentenciabd -> execute()) {
+        if ($sentenciabd -> rowCount() > 0) {
+
+            $fila = $sentenciabd -> fetch(PDO::FETCH_ASSOC);
+            
+            
+            $usuario = new Usuario( //Decodifico el JSON en un objeto Usuario, no lo hago con json decode ya que me estaba generando problemas.
+                $fila['NOMBRE'],
+                $fila['DNI'],
+                $fila['APELLIDO1'],
+                $fila['APELLIDO2'],
+                $fila['FECHANACIMIENTO'],
+                $fila['CONTRASENA'],
+                $fila['EMAIL'],
+                $fila['ROL']
+            );
+
+            return $usuario;
         }
     }
-
-    return null;    //Si no, no devuelve nada.
+    
 }
+
 //-------------------------------------------------------
+
+public static function obtenertodosusuarios() {
+    $conexion = GBD::obtenerlaconexion();   
+    $consulta = "SELECT * FROM USUARIO ";
+
+    $sentenciabd = $conexion -> prepare($consulta);
+
+    if ($sentenciabd -> execute()) {
+        if ($sentenciabd -> rowCount() > 0) {
+
+            $fila = $sentenciabd -> fetch(PDO::FETCH_ASSOC);
+            
+            
+            $usuario = new Usuario( //Decodifico el JSON en un objeto Usuario, no lo hago con json decode ya que me estaba generando problemas.
+                $fila['NOMBRE'],
+                $fila['DNI'],
+                $fila['APELLIDO1'],
+                $fila['APELLIDO2'],
+                $fila['FECHANACIMIENTO'],
+                $fila['CONTRASENA'],
+                $fila['EMAIL'],
+                $fila['ROL']
+            );
+
+            return $usuario;
+        }
+    }
+    
+}
 
 
 //--Getters Y Setters-----------------------------------------------------

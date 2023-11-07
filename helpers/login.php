@@ -2,7 +2,7 @@
 //--REQUIRES-------------------------------
 require_once 'gbd.php';
 require_once 'sesion.php';
-require_once './Clases/usuario.php';
+require_once './Classes/usuario.php';
 
 
 class Login {
@@ -13,19 +13,25 @@ class Login {
     //También añadimos el booleano $recuerdame para almacenar la cookie si se marca la casilla en el formulario.
 
     public static function identifica($dni, $contrasena, bool $recuerdame) {
+
         if (Usuario::existeusuario($dni, $contrasena)) {
-            // Iniciamos la sesión si no está iniciada.
+            //Inicio la sesión si no está iniciada.
             Sesion::iniciar();
-            // Obtener el usuario por nombre y contraseña y almacenarlo en la sesión.
+            
+            //Obtenemos los datos del usuario.
             $usuario = Usuario::obtenerdatosusuario($dni, $contrasena);
             if ($usuario) {
-                Sesion::escribir('dni', $usuario);
-            }
 
+                Sesion::escribir('usuario', json_encode($usuario)); //Lo almacenamos pasado a json.
+                
+            }
+    
             // Manejo de la cookie.
             // Si se marca "Recuérdame", guarda la cookie.
             if ($recuerdame) {
+
                 self::guardarcookie($dni);
+
             }
         }
     }
@@ -35,15 +41,21 @@ class Login {
     //Función para saber si el usuario está logueado o no.
 
     public static function usuarioestalogueado() {
+        //Inicio la sesión si no está iniciada.
         Sesion::iniciar();
-        // Verificamos si el usuario está almacenado en la sesión.
-        if (Sesion::existe('dni')) {
+
+        //VerificO si el usuario está almacenado en la sesión.
+        if (Sesion::existe('usuario')) {
+
             return true;
+
         }
 
-        // Verificamos si hay una cookie de usuario.
+        //VerificO si hay una cookie de usuario.
         if (isset($_COOKIE['dni'])) {
+
             return true;
+
         }
 
         return false;

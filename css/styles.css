@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    
+}
+
+/*NAV*/
+
+.navbar{
+    position: fixed;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(34,45,90, 0.9);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 5px 30px 0px rgba(0,0,0,0.7);
+    box-sizing: border-box;
+    align-items: center;
+    z-index: 9999;
+}
+
+.navbar a {
+    color: rgba(255,255,255, 0.8);
+}
+
+.navbar .logo {
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+.navbar .navlinks{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navlinks ul{
+    display: flex;
+}
+
+.navbar .navlinks ul li{
+    margin: 0 25px;
+}
+
+.navbar .navlinks ul li.onthis a{
+    color: white;
+    font-weight: 600;
+}
+
+nav li a:hover{
+    color: rgba(255,255,255,1);
+    transition: all 0.3s ease 0s;
+}
+
+#logo{
+    margin-left: 4px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    
+}
+
+#textlogo{
+    color: white;
+    padding-left: 5px;
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+.navbar .desplegablemenu {
+    display: none;
+    width: 35px;
+    position: relative;
+    top: 0px;
+    right: 30px;
+
+}
+/*MODIFICAR SOLO PARA ESPAÑOL*/
+.idiomaespacio a{
+    margin-left: -35px;
+    
+}
+.espacioizquierda a{
+    margin-left: -10px;
+
+}
+
+
+
+/*MAIN*/
+.body {
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.login-form {
+    text-align: center;
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    margin: 0 auto; 
+}
+
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+}
+
+
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px; 
+    transition: background-color 0.3s;
+}
+
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+/*FOOTER */
+
+footer{
+    width: 100%;
+    position: absolute;
+    
+}
+.footerdiv{
+    box-shadow: 0px 5px 30px 0px rgba(0,0,0,0.7);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #191e28;
+}
+.footerdiv .footerbottom{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+}
+.footerdiv .redes{
+    text-align: center;
+    padding-bottom: 25px;
+    color: black;
+}
+.footerdiv .redes a{
+    background-color: white;
+    font-size: 20px;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 8px;
+    margin: 0 4px;
+    opacity: 0.9;
+}
+.footerdiv .redes a:hover{
+    transition: all 0.3s ease;
+    color: #007cb0;
+    background-color: black;
+    opacity: 1;
+}
+.footerdiv ul{
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 0;
+}
+.footerdiv ul li a{
+    color: rgba(255,255,255,0.8);
+    
+}
+.footerdiv ul li{
+    display: inline-block;
+    padding: 0 15px;
+}
+.footerdiv ul li a:hover{
+    color: rgba(255,255,255,1);
+    transition: all 0.3s ease 0s;
+}
+.footerdiv ul li a:active{
+    color: rgba(255,255,255,1);
+}
+.footerdiv ul li.onthis a{
+    color: #007cb0;
+    font-weight: 600;
+}
+.footerbottom{
+    font-weight: 600;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: black;
+    color: #f3f2ee;
+    text-align: center;
+}
+.footerbottom p{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#logofooter{
+    width: 15px;
+    height: 15px;
+}
+

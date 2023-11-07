@@ -1,6 +1,6 @@
 <?php
 //--REQUIRES-------------------------------
-require_once './helper/sesion.php';
+require_once './helpers/sesion.php';
 
 //Iniciamos la sesión si no lo está.
 Sesion::iniciar();
@@ -9,7 +9,7 @@ if (isset($_COOKIE['dni'])) {
     setcookie('dni', '', time() - 3600, "/");
 }
 //Eliminamos la sesión del usuario.
-Sesion::eliminar('dni');
+Sesion::eliminar('usuario');
 //Redirigimos a inicio.
 header("location: ?menu=inicio");
 ?>

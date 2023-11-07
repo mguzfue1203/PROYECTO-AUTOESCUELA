@@ -1,8 +1,3 @@
-<?php
-//--REQUIRES-------------------------------
-
-
-?>
 <!--BODY-->
 <div class="body">
 <h1>No se ha encontrado la página</h1>
