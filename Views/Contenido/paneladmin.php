@@ -13,7 +13,7 @@
             <th>Acciones</th>
             <th>
                 <form id="adminform" method="get" action="">
-                    <button type="submit" id="btnusuarios" name="submit">Mostrar Usuarios</button>
+                    <button type="submit" id="btnusuarios" name="cargarusuarios">Mostrar Usuarios</button>
                 </form>
             </th>
         </tr>

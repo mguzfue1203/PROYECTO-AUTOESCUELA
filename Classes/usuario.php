@@ -87,16 +87,14 @@ public static function obtenerdatosusuario($dni, $contrasena) {
 
 public static function obtenertodosusuarios() {
     $conexion = GBD::obtenerlaconexion();   
-    $consulta = "SELECT * FROM USUARIO ";
+    $consulta = "SELECT * FROM USUARIO";
 
     $sentenciabd = $conexion -> prepare($consulta);
 
     if ($sentenciabd -> execute()) {
-        if ($sentenciabd -> rowCount() > 0) {
-
-            $fila = $sentenciabd -> fetch(PDO::FETCH_ASSOC);
+        $usuarios = array();
             
-            
+        while ($fila = $sentenciabd->fetch(PDO::FETCH_ASSOC)) {
             $usuario = new Usuario( //Decodifico el JSON en un objeto Usuario, no lo hago con json decode ya que me estaba generando problemas.
                 $fila['NOMBRE'],
                 $fila['DNI'],
@@ -107,10 +105,12 @@ public static function obtenertodosusuarios() {
                 $fila['EMAIL'],
                 $fila['ROL']
             );
-
-            return $usuario;
-        }
+            $usuarios[] = $usuario;
+           
+        } 
+        return $usuarios;
     }
+    return null;
     
 }
 
