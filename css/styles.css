@@ -79,7 +79,7 @@ nav li a:hover{
 
 }
 /*MODIFICAR SOLO PARA ESPAÑOL*/
-.idiomaespacio a{
+.usuarionav a{
     margin-left: -35px;
     
 }
@@ -139,7 +139,13 @@ nav li a:hover{
 }
 
 
+.tablaadmin{
+    border: 1px solid black;
+    width: 100%;
+    height: 500px;
+    padding-top: 200px;
 
+}
 
 
 /*FOOTER */

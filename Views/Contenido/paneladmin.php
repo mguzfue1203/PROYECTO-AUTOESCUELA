@@ -1,5 +1,5 @@
 <!--BODY-->
-<table>
+<table class="tablaadmin">
     <thead>
         <tr>
             <th>Nombre</th>
@@ -11,6 +11,11 @@
             <th>Email</th>
             <th>Rol</th>
             <th>Acciones</th>
+            <th>
+                <form id="adminform" method="get" action="">
+                    <button type="submit" id="btnusuarios" name="submit">Mostrar Usuarios</button>
+                </form>
+            </th>
         </tr>
     </thead>
     <tbody>

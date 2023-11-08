@@ -28,7 +28,7 @@ public static function guardarusuario($nombre, $dni, $apellido1, $apellido2, $fe
     $conexion = GBD::obtenerlaconexion();
     $consulta = "INSERT INTO USUARIO (NOMBRE, DNI, APELLIDO1, APELLIDO2, FECHANACIMIENTO, CONTRASENA, EMAIL, ROL) VALUES (:nombre, :dni, :apellido1, :apellido2, :fechanacimiento, :contrasena, :email, :rol)";
 
-    $sentenciabd = $conexion->prepare($consulta);
+    $sentenciabd = $conexion -> prepare($consulta);
 
     $sentenciabd -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
     $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);
@@ -39,7 +39,7 @@ public static function guardarusuario($nombre, $dni, $apellido1, $apellido2, $fe
     $sentenciabd -> bindParam(':email', $email, PDO::PARAM_STR);
     $sentenciabd -> bindParam(':rol', $rol, PDO::PARAM_STR);
 
-    return $sentenciabd->execute();
+    return $sentenciabd -> execute();
 }
 
 //-------------------------------------------------------

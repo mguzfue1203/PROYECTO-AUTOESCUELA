@@ -5,16 +5,15 @@
                 <ul>
                     <li><a href="" class="onthis">Inicio</a></li>
                     <li><a href="?menu=registra">Registroprueba</a></li>
-                    <li class="onthis idiomaespacio espacioizquierda">
+                    <li class="usuarionav espacioizquierda">
                         <a href="#"></a>
                     </li>
-                    <li class="idiomaespacio">
-                        <a href=""></a>
+                    <li class="usuarionav">
+                        
+                        <a href="">Logout</a>
                     </li>
                 </ul>
-                
                 </div>
-                <img src="" alt="DESPLEGABLE DEL MENÚ" class="desplegablemenu">
             </nav> 
         </header>
 

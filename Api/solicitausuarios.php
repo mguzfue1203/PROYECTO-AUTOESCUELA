@@ -1,6 +1,5 @@
 <?php
-require_once './Classes/usuario.php';
-require_once './helpers/gbd.php';
+require_once './auto/Autocargador.php';
 
 $usuarios = Usuario::obtenertodosusuarios();
 

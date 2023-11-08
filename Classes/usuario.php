@@ -55,7 +55,7 @@ public static function obtenerdatosusuario($dni, $contrasena) {
     $conexion = GBD::obtenerlaconexion();   
     $consulta = "SELECT * FROM USUARIO WHERE DNI = :dni AND CONTRASENA = MD5(:contrasena)";
 
-    $sentenciabd = $conexion->prepare($consulta);
+    $sentenciabd = $conexion -> prepare($consulta);
 
     $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);
     $sentenciabd -> bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
@@ -113,6 +113,21 @@ public static function obtenertodosusuarios() {
     }
     
 }
+
+//-------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //--Getters Y Setters-----------------------------------------------------
