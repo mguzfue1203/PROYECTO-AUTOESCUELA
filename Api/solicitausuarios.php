@@ -1,12 +1,17 @@
 <?php
 require_once '../auto/Autocargador.php';
 
-$usuarios = Usuario::obtenertodosusuarios();
-var_dump($usuarios);
-//resultados como un JSON
+if ($_SERVER['REQUEST_METHOD']=='GET'){
 
-header('Content-Type: application/json');
+    $usuarios = Usuario::obtenertodosusuarios();
+    var_dump($usuarios);
+    //resultados como un JSON
+    
+    header('Content-Type: application/json');
+    echo json_encode($usuarios);
 
-echo json_encode($usuarios);
 
+
+
+}
 ?>

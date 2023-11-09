@@ -1,6 +1,5 @@
 <?php
 //--REQUIRES-------------------------------
-require_once './helpers/sesion.php';
 
 //Iniciamos la sesión si no lo está.
 Sesion::iniciar();

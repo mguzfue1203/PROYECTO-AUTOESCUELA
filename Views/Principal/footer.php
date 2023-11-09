@@ -16,7 +16,7 @@
        
         </div>
         <div class="footerbottom">
-            <p>MarcAutoescuelas<img src="/assets/img/html.png" id="logofooter"> @Todos los derechos reservados 2023</p>
+            <p>MarcAutoescuelas<img src="../../Assets/img//l.png" id="logofooter"> @Todos los derechos reservados 2023</p>
         </div>
         </footer>
        

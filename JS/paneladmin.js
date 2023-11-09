@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('btnusuarios').addEventListener('click', function (event) {
-        event.preventDefault(); // Previene la acción predeterminada del formulario (redirección)
+        event.preventDefault(); // 
         fetch('../Api/solicitausuarios.php', {
             method: 'GET',
             headers: {
@@ -9,25 +9,30 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Agrega esta línea para verificar la respuesta de la API
+            console.log(data); 
             var tableBody = document.querySelector('.tablaadmin tbody');
-            tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
-            data.forEach(function (user) {
+
+            tableBody.innerHTML = ''; // 
+            
+            data.forEach(function (usuario) {
+               
                 var row = document.createElement('tr');
-                row.innerHTML = '<td>' + user.nombre + '</td>' +
-                               '<td>' + user.dni + '</td>' +
-                               '<td>' + user.apellido1 + '</td>' +
-                               '<td>' + user.apellido2 + '</td>' +
-                               '<td>' + user.fechanacimiento + '</td>' +
-                               '<td>' + user.contrasena + '</td>' +
-                               '<td>' + user.email + '</td>' +
-                               '<td>' + user.rol + '</td>' +
-                               '<td>Acciones</td>'; // Puedes personalizar las acciones
+                row.innerHTML = '<td>' + usuario.nombre + '</td>' +
+                               '<td>' + usuario.dni + '</td>' +
+                               '<td>' + usuario.apellido1 + '</td>' +
+                               '<td>' + usuario.apellido2 + '</td>' +
+                               '<td>' + usuario.fechanacimiento + '</td>' +
+                               '<td>' + usuario.contrasena + '</td>' +
+                               '<td>' + usuario.email + '</td>' +
+                               '<td>' + usuario.rol + '</td>' +
+                               '<td>Acciones</td>'; // P
                 tableBody.appendChild(row);
             });
         })
         .catch(error => {
+
             console.error(error);
+            
         });
     });
 });

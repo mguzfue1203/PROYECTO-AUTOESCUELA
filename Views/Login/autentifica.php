@@ -1,7 +1,6 @@
 <?php
 //--MANEJO FORMULARIO-------------------------------
 //--REQUIRES-------------------------------
-require_once './helpers/login.php';
 //Si el usuario está logueado redirige al index.
 if (Login::usuarioestalogueado()) {
     header("Location: ./index.php?menu=inicio");
@@ -31,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!--BODY-->
-<div class="body">
+<div class="bodylogin">
     <div>
-        <form action='' method='post' class="login-form">
+        <form action='' method='post' class="loginregister-form">
             <h2>Identifícate</h2>
             <div>
                 <input type='text' name='dni' id='dni' placeholder='DNI' required='required' class="input-field">
@@ -53,11 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type='submit' name='submit' class="submit-button">Iniciar sesión</button>
             </div>
             <div>
-                <label>
-                    <input type='checkbox' name='recuerdame' id='recuerdame' class="checkbox">Recuérdame</label>
-                </label>
+            <span class="checkbox"></span>
+                    <input type='checkbox' name='recuerdame' id='cookie' class="checkbox"><label for="recuerdame" class="checkbox">Recuérdame</label>
+                    <p class="sub-submit">¿No tienes cuenta? <a href='index.php?menu=registra'>Crea una.</a></p>
             </div>
         </form>
-        <p>¿No tienes cuenta? <a href='index.php?menu=registra'>Crea una.</a></p>
+        
     </div>
 </div>

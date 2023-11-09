@@ -94,7 +94,7 @@ public static function obtenertodosusuarios() {
     if ($sentenciabd -> execute()) {
         $usuarios = array();
             
-        while ($fila = $sentenciabd->fetch(PDO::FETCH_ASSOC)) {
+        while ($fila = $sentenciabd -> fetch(PDO::FETCH_ASSOC)) {
             $usuario = new Usuario( //Decodifico el JSON en un objeto Usuario, no lo hago con json decode ya que me estaba generando problemas.
                 $fila['NOMBRE'],
                 $fila['DNI'],
