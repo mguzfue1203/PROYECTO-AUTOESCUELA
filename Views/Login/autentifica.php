@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dni = $_POST['dni'];
         $contrasena = $_POST['contrasena'];
         // Realizamos la verificación de los campos introducidos en la base de datos
-        if (usuario::existeusuario($dni, $contrasena)) {
+        if (repousuarios::existeusuario($dni, $contrasena)) {
             $recuerdame = isset($_POST['recuerdame']);
             Login::identifica($dni, $contrasena, $recuerdame);
             header('Location: ./index.php?menu=tests');

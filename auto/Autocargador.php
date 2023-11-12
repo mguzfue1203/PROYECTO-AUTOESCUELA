@@ -20,6 +20,12 @@ function autocarga($clase){
         
 
     }
+    else if(file_exists($_SERVER["DOCUMENT_ROOT"].'/db/'.$clase.'.php')){
+
+        include $_SERVER["DOCUMENT_ROOT"].'/db/'.$clase.'.php';
+        
+
+    }
     
     else if(file_exists($_SERVER["DOCUMENT_ROOT"].'/Views/'.$clase.'.php')){
 

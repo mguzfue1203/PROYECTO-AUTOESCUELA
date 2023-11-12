@@ -1,8 +1,4 @@
 <?php
-//--REQUIRES-------------------------------
-require_once 'gbd.php';
-require_once 'sesion.php';
-require_once './Classes/usuario.php';
 
 
 class Login {
@@ -14,12 +10,12 @@ class Login {
 
     public static function identifica($dni, $contrasena, bool $recuerdame) {
 
-        if (Usuario::existeusuario($dni, $contrasena)) {
+        if (repousuarios::existeusuario($dni, $contrasena)) {
             //Inicio la sesión si no está iniciada.
             Sesion::iniciar();
             
             //Obtenemos los datos del usuario.
-            $usuario = Usuario::obtenerdatosusuario($dni, $contrasena);
+            $usuario = repousuarios::obtenerdatosusuario($dni, $contrasena);
             if ($usuario) {
 
                 Sesion::escribir('usuario', json_encode($usuario)); //Lo almacenamos pasado a json.
@@ -60,6 +56,13 @@ class Login {
 
         return false;
     }
+//-------------------------------------------------------
+
+public static function usuariologueado() {
+
+}
+
+
 
 //-------------------------------------------------------
 

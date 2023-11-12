@@ -1,8 +1,4 @@
 <?php
-//--REQUIRES-------------------------------
-require_once 'gbd.php';
-//require_once './Clases/usuario.php';
-
 Class Register {
     //--Funciones-----------------------------------------------------
 
@@ -46,7 +42,7 @@ public static function guardarusuario($nombre, $dni, $apellido1, $apellido2, $fe
 
 public static function estaregistrado($dni, $contrasena) {
     
-    return Usuario::existeusuario($dni, $contrasena);
+    return repousuarios::existeusuario($dni, $contrasena);
 }
 
 }

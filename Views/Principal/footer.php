@@ -8,9 +8,9 @@
                    <a href="https://www.linkedin.com/in/marcosguzmanfuentes/"><i class="fab fa-linkedin"></i></a>
                 </div>            
                 <ul class="links">
-                    <li><a href="">Inicio</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                    <li><a href="?menu=inicio">Inicio</a></li>
+                    <li><a href="">Prueba</a></li>
+                    <li><a href="">Prueba</a></li>
                     
                 </ul>
        
