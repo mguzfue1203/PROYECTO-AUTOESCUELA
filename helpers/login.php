@@ -60,6 +60,8 @@ class Login {
 
 public static function usuariologueado() {
 
+    
+    
 }
 
 

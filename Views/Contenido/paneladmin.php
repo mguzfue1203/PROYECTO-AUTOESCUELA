@@ -23,7 +23,7 @@ if (!Login::usuarioestalogueado()) {
                     <th>Acciones</th>
                     <th id="mostrarusers">
                         <form id="adminform" method="get" action="">
-                            <button type="submit" id="btnusuarios" name="cargarusuarios">Mostrar Usuarios</button>
+                            <button type="submit" id="btnusuarios" name="cargarusuarios">Mostrar Usuarios</button>                            
                         </form>
                     </th>
                 </tr>
@@ -32,6 +32,7 @@ if (!Login::usuarioestalogueado()) {
                 <!--Aqui voy a pintar a todos los usuarios-->
             </tbody>
         </table>
+        
     </section>
 </article>
     
