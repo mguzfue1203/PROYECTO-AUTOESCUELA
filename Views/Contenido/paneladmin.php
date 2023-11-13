@@ -34,5 +34,14 @@ if (!Login::usuarioestalogueado()) {
         </table>
         
     </section>
+    <section class="section100admin2">
+
+    </section>
+    <section class="section100admin2">
+
+    </section>
+    <section class="section100admin3">
+        <p>Si deseas crear nuevos tests, o preguntas de exámen, puedes ir al panel de administración de exámenes aquí: </p>
+    </section>
 </article>
     

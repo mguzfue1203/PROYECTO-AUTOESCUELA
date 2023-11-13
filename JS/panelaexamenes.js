@@ -169,16 +169,20 @@ document.addEventListener('DOMContentLoaded', function () {
     function mostrarocultardatos() {
 
         if (mostrarocultarusuarios) {
+
             btnmostrar.textContent = 'Ocultar Usuarios';
             btnmostrar.name = 'descargarusuarios';
             cuerpotabla.style.display = 'table-row-group';
+
         } else {
+
             cuerpotabla.style.display = 'none';
             btnmostrar.textContent = 'Mostrar Usuarios';
             btnmostrar.name = 'cargarusuarios';
+
         }
-        mostrarocultarusuarios = !mostrarocultarusuarios;
-        actualizartabla();
+        mostrarocultarusuarios = !mostrarocultarusuarios;   //Actua de Switch, si al principio antes de clickar está true, pasa a false y viceversa
+        actualizartabla();  //Actualizamos la tabla siempre que realicemos un cambio
     }
 //--------------------------------------
 

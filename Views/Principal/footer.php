@@ -9,8 +9,7 @@
                 </div>            
                 <ul class="links">
                     <li><a href="?menu=inicio">Inicio</a></li>
-                    <li><a href="">Prueba</a></li>
-                    <li><a href="">Prueba</a></li>
+
                     
                 </ul>
        

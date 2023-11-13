@@ -26,6 +26,27 @@ public static function existeusuario($dni, $contrasena) {
 
 //-------------------------------------------------------
 
+
+
+public static function existeusuariodni($dni) {
+    $conexion = GBD::obtenerlaconexion(); // Obtenemos la conexión a la base de datos a través de la clase GBD.
+    $consulta = "SELECT * FROM USUARIO WHERE DNI = :dni";
+
+    $sentenciabd = $conexion -> prepare($consulta); //Preparo una sentencia donde utilizamos la conexion y la consulta.
+
+    $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);    //Enlazamos los valores que recibimos a la consulta de la base de datos.
+
+    if ($sentenciabd -> execute()) {    
+        
+        return $sentenciabd -> rowCount() > 0; //Ejecutamos la sentencia, si el número de campos es mayor a 0, ha encontrado usuario, devolvemos true, si no.
+    }
+    
+    return false; //Si la consulta no funciona, devolvemos false.
+}
+
+
+//-------------------------------------------------------
+
 public static function obtenerdatosusuario($dni, $contrasena) {
     $conexion = GBD::obtenerlaconexion();   
     $consulta = "SELECT * FROM USUARIO WHERE DNI = :dni AND CONTRASENA = MD5(:contrasena)";
@@ -34,6 +55,37 @@ public static function obtenerdatosusuario($dni, $contrasena) {
 
     $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);
     $sentenciabd -> bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
+
+    if ($sentenciabd -> execute()) {
+        if ($sentenciabd -> rowCount() > 0) {
+
+            $fila = $sentenciabd -> fetch(PDO::FETCH_ASSOC);
+            
+            
+            $usuario = new Usuario( //Decodifico el JSON en un objeto Usuario, no lo hago con json decode ya que me estaba generando problemas.
+                $fila['NOMBRE'],
+                $fila['DNI'],
+                $fila['APELLIDO1'],
+                $fila['APELLIDO2'],
+                $fila['FECHANACIMIENTO'],
+                $fila['CONTRASENA'],
+                $fila['EMAIL'],
+                $fila['ROL']
+            );
+
+            return $usuario;
+        }
+    }
+    
+}
+
+//-------------------------------------------------------
+
+public static function obtenerdatosusuariotodo() {
+    $conexion = GBD::obtenerlaconexion();   
+    $consulta = "SELECT * FROM USUARIO";
+
+    $sentenciabd = $conexion -> prepare($consulta);
 
     if ($sentenciabd -> execute()) {
         if ($sentenciabd -> rowCount() > 0) {
@@ -124,7 +176,6 @@ public static function guardarusuario($nombre, $dni, $apellido1, $apellido2, $fe
 
     return $sentenciabd -> execute();
 }
-
 
 
 

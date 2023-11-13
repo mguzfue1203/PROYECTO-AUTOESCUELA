@@ -11,7 +11,7 @@
                     </li>
                     <li class="usuarionav">
                     <form action="index.php?menu=logout" method="post" class="centrar-contenido-inicio">
-                        <label for="submit" id="textousuarionav">Hola <?php Login::usuariologueado();  ?>
+                        <label for="submit" id="textousuarionav">USERHEADER
                         <input type="submit" value="Cerrar Sesión" name="btnlogout" id="btnlogout"></label>
                     </form>
                     </li>
