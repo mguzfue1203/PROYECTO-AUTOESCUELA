@@ -26,58 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
         actualizartablaadmin();  //Actualizamos la tabla siempre que realicemos un cambio
     }
 //--------------------------------------
-
-    function agregarusuarioadmin() {     //Esta funcion llama a la api para guardar el usuario, creando y almacenando las propiedades de los datos que inteoducimos en los input.
-        var nuevousuario = {
-            nombre: document.getElementById('nuevousuario').value,
-            dni: document.getElementById('nuevousuariodni').value,
-            apellido1: document.getElementById('nuevousuarioapellido1').value,
-            apellido2: document.getElementById('nuevousuarioapellido2').value,
-            fechanacimiento: document.getElementById('nuevousuariofechadenacimiento').value,
-            contrasena: document.getElementById('nuevousuariocontraseña').value,
-            email: document.getElementById('nuevousuarioemail').value,
-            rol: document.getElementById('nuevousuariorol').value
-        };
-
-        //Aqui realizamos el request, probé a realizar esto con fetch pero creo que es más conveniente usar XMLHttpRequest ya que lo hemos visto en mayor profundidad en clase.
-        var xhr = new XMLHttpRequest();
-
-        xhr.onreadystatechange = function () {
-
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-
-                if (xhr.status === 200) {   //Si el estatus recibido es 200 OK, nos mostrará una alerta y por consola que todo va bien, y actualiza la tabla.
-
-                    console.log('Usuario añadido correctamente.');
-                    alert('Usuario añadido correctamente.');
-                    actualizartablaadmin();
-
-                } else {
-
-                    console.error('Error al agregar el usuario');
-
-                }
-            }
-        };
-
-        xhr.open('POST', '../Api/usuario/guardausuario.php', true);     //Llamamos a la api usando POST en este caso ya que vamos a introducir datos.
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(nuevousuario));
-    }
-
-//--------------------------------------
-
-    function actualizartablaadmin() {   //Con esta funcion generaremos la tabla en función a los datos que posea la base de datos, recibiendo estos a través de la API y generando a su vez los input para introducir usuarios
+ function actualizartablaadmin() {   //Con esta funcion generaremos la tabla en función a los datos que posea la base de datos, recibiendo estos a través de la API y generando a su vez los input para introducir usuarios
                                         //Al poder actualizar la tabla de cualquier manera, usaremos a través de un botón los inputs para introducir usuarios y actualizar en tiempo real.
-        var xhr = new XMLHttpRequest();
+        var peticionajax = new XMLHttpRequest();
 
-        xhr.onreadystatechange = function () {
+        peticionajax.onreadystatechange = function () {
 
-            if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (peticionajax.readyState === XMLHttpRequest.DONE) {
 
-                if (xhr.status === 200) {   //Si la respuesta es OK:
+                if (peticionajax.status === 200) {   //Si la respuesta es OK:
 
-                    var datos = JSON.parse(xhr.responseText);   //Declaro los datos, decodificados del JSON recibido.
+                    var datos = JSON.parse(peticionajax.responseText);   //Declaro los datos, decodificados del JSON recibido.
                     console.log(datos);     //Muestro los datos por consola.
                     cuerpotabla.innerHTML = '';      //Preparamos el espacio para generar la tabla
 
@@ -94,8 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             '<td id="usuario' + (incremento + 1) + 'rol">' + usuario.rol + '</td>' +
                             '<td>' +
                             '<form method="post" action="">' +
-                            '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar">Editar</button>' +
-                            '<button type="submit" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar">Eliminar</button>' +
+                            '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar"><p class="fa fa-edit"></p></button>' +
+                            '<button type="submit" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar"><p class="fa fa-times"></p></button>' +
                             '</form>' +
                             '</td>';
                         cuerpotabla.appendChild(row);      //Le damos a cuerpotabla los campos de row para que los dibuje.
@@ -133,10 +92,51 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
-        xhr.open('GET', '../Api/usuario/solicitausuarios.php', true);   //Solicitamos a la API en este caso a través de GET ya que queremos recoger los usuarios.
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send();     //Colocamos este send para que actualice en tiempo real.
+        peticionajax.open('GET', '../Api/usuario/solicitausuarios.php', true);   //Solicitamos a la API en este caso a través de GET ya que queremos recoger los usuarios.
+        peticionajax.setRequestHeader('Content-Type', 'application/json');
+        peticionajax.send();     //Colocamos este send para que actualice en tiempo real.
     }
+
+
+//--------------------------------------
+function agregarusuarioadmin() {     //Esta funcion llama a la api para guardar el usuario, creando y almacenando las propiedades de los datos que inteoducimos en los input.
+    var nuevousuario = {
+        nombre: document.getElementById('nuevousuario').value,
+        dni: document.getElementById('nuevousuariodni').value,
+        apellido1: document.getElementById('nuevousuarioapellido1').value,
+        apellido2: document.getElementById('nuevousuarioapellido2').value,
+        fechanacimiento: document.getElementById('nuevousuariofechadenacimiento').value,
+        contrasena: document.getElementById('nuevousuariocontraseña').value,
+        email: document.getElementById('nuevousuarioemail').value,
+        rol: document.getElementById('nuevousuariorol').value
+    };
+
+    //Aqui realizamos el request, probé a realizar esto con fetch pero creo que es más conveniente usar XMLHttpRequest ya que lo hemos visto en mayor profundidad en clase.
+    var peticionajax = new XMLHttpRequest();
+
+    peticionajax.onreadystatechange = function () {
+
+        if (peticionajax.readyState === XMLHttpRequest.DONE) {
+
+            if (peticionajax.status === 200) {   //Si el estatus recibido es 200 OK, nos mostrará una alerta y por consola que todo va bien, y actualiza la tabla.
+
+                console.log('Usuario añadido correctamente.');
+                alert('Usuario añadido correctamente.');
+                actualizartablaadmin();
+
+            } else {
+
+                console.error('Error al agregar el usuario');
+
+            }
+        }
+    };
+
+    peticionajax.open('POST', '../Api/usuario/guardausuario.php', true);     //Llamamos a la api usando POST en este caso ya que vamos a introducir datos.
+    peticionajax.setRequestHeader('Content-Type', 'application/json');
+    peticionajax.send(JSON.stringify(nuevousuario));
+}
+
 //--EVENTOS------------------------------------
 
 
@@ -160,13 +160,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (celdadni) {
 
                 var dni = celdadni.getAttribute('datosdni');
-                var borrarxhr = new XMLHttpRequest();
+                var peticionajax = new XMLHttpRequest();
 
-                borrarxhr.onreadystatechange = function () {
+                peticionajax.onreadystatechange = function () {
 
-                    if (borrarxhr.readyState === XMLHttpRequest.DONE) {
+                    if (peticionajax.readyState === XMLHttpRequest.DONE) {
 
-                        if (borrarxhr.status === 200) {
+                        if (peticionajax.status === 200) {
 
                             console.log('Usuario eliminado correctamente.');
                             alert('¡Atención! Tras eliminar un usuario, asegúrate de que su sesión se ha cerrado para que no pueda volver a acceder.');
@@ -179,10 +179,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 };
 
-                borrarxhr.open('POST', '../Api/usuario/borrausuarios.php', true);   //Llamada a la API para borrar el usuario a través del dni.
-                borrarxhr.setRequestHeader('Content-Type', 'application/json');
+                peticionajax.open('POST', '../Api/usuario/borrausuarios.php', true);   //Llamada a la API para borrar el usuario a través del dni.
+                peticionajax.setRequestHeader('Content-Type', 'application/json');
                 var datos = JSON.stringify({ dni: dni });
-                borrarxhr.send(datos);
+                peticionajax.send(datos);
             }
         }
     });

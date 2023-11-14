@@ -7,14 +7,28 @@
                     <li><a href="?menu=inicio" class="onthis">Inicio</a></li>
                     <li><a href="?menu=tests" class="onthis">Tests</a></li>
                     <li><a href="?menu=panelexamenes">Gestionar Examenes</a></li>
-                    <li class="usuarionav">
-                    <form action="index.php?menu=logout" method="post" class="centrar-contenido-inicio">
-                        <label for="submit" id="textousuarionav">
-                        <input type="submit" value="Cerrar Sesión" name="btnlogout" id="btnlogout"></label>
+
+                </ul>
+                <ul class="usuarionav" id="dropdown">
+                <p id="textousuarionav"><img src="../../Assets/img/user.png" id="logo"> Bienvenido, <?php $nombreusuario = Login::nombreusuariolog(); echo $nombreusuario ?></p>
+
+                    <li class="dropdown-content">
+
+                    <form action="index.php?menu=logout" method="post" class="centrarinicio">
+
+                        <input type="submit" value="Cerrar Sesión" name="btnlogout" id="btnlogout">
+
                     </form>
+
                     </li>
+                    
+                    
+                    
+    
+                
                 </ul>
                 </div>
             </nav> 
         </header>
+
 

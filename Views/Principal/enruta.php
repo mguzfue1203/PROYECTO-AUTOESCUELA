@@ -26,6 +26,9 @@ if (isset($_GET['menu'])) {
     elseif ($menu === 'paneladmin') {
         require_once './Views/Contenido/paneladmin.php';
     }
+    elseif ($menu === 'panelexamenes') {
+        require_once './Views/Contenido/panelexamenes.php';
+    }
    
     else {
         // Si no encuentra ninguna de estas opciones redirige a página no encontrada

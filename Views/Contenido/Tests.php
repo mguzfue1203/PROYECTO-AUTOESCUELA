@@ -7,14 +7,12 @@ if (!Login::usuarioestalogueado()) {
 
 ?>
 <!--BODY-->
-<article>
-    <section class="section100">
-<h1>Página de Tests</h1>
-<p>Esta es la página de Tests.</p>
-<a href='index.php?menu=inicio'>Ir a la página de inicio</a>
-<a href='index.php?menu=paneladmin'>Ir a panel admin</a>
-<form action="index.php?menu=logout" method="post">
-    <input type="submit" value="Cerrar Sesión">
-    </form>
+<article class="articlefoto">
+        <section class="section100imgtests">
+                    <p class="titulosection">Tests</p>
+        </section>
+        <section class="section100">
+        <h1>PRUEBA SECTION 100%</h1>
+            
     </section>
 </article>

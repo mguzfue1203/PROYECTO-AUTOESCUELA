@@ -1,17 +1,17 @@
 <?php
 require_once '../../auto/Autocargador.php';
 if ($_SERVER['REQUEST_METHOD']=='POST'){
-    $data = json_decode(file_get_contents('php://input'), true);
+    $datos = json_decode(file_get_contents('php://input'), true);
 
     // Guarda los datos del nuevo usuario en la base de datos
-    $nombre = $data['nombre'];
-    $dni = $data['dni'];
-    $apellido1 = $data['apellido1'];
-    $apellido2 = $data['apellido2'];
-    $fechanacimiento = $data['fechanacimiento'];
-    $contrasena = $data['contrasena'];
-    $email = $data['email'];
-    $rol = $data['rol'];
+    $nombre = $datos['nombre'];
+    $dni = $datos['dni'];
+    $apellido1 = $datos['apellido1'];
+    $apellido2 = $datos['apellido2'];
+    $fechanacimiento = $datos['fechanacimiento'];
+    $contrasena = md5($datos['contrasena']);
+    $email = $datos['email'];
+    $rol = $datos['rol'];
 
 $usuarios = repousuarios::guardarusuario($nombre, $dni, $apellido1, $apellido2, $fechanacimiento, $contrasena, $email, $rol);
 

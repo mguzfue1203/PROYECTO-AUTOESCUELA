@@ -49,30 +49,56 @@ class Login {
 //-------------------------------------------------------
 
 
-public static function rolusuariolog(){
-    // Inicias la sesión si no está iniciada
-Sesion::iniciar();
-
-// Verificas si el usuario está almacenado en la sesión
-if (Sesion::existe('usuario')) {
-
-    // Obtienes el objeto usuario almacenado en la sesión
-    $usuario_logueado = Sesion::leer('usuario');
-
-    // Obtienes el rol del usuario logueado
-    $rol_usuario_logueado = $usuario_logueado->getRol();
+    public static function rolusuariolog(){
+    
+        Sesion::iniciar();
 
 
-    return $rol_usuario_logueado;
+        if (Sesion::existe('usuario')) {
+
+
+            $usuariolog = Sesion::leer('usuario');
+
+
+            $rolusuariolog = $usuariolog->getrol();
+
+
+            return $rolusuariolog;
+    } else {
+
+        return null;
+
+    }
+
+}
+
+
+public static function nombreusuariolog(){
+    
+    Sesion::iniciar();
+
+
+    if (Sesion::existe('usuario')) {
+
+
+        $usuariolog = Sesion::leer('usuario');
+
+
+        $nombreusuariolog = $usuariolog->getnombre();
+
+
+        return $nombreusuariolog;
 } else {
+
     return null;
+
+}
+
 }
 
 
 
 
-
-}
 
     //Función para guardar la cookie.
 

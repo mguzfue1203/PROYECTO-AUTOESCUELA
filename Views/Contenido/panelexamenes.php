@@ -4,7 +4,7 @@ if (!Login::usuarioestalogueado()) {
     header("Location: ./index.php?menu=inicio");
     exit;
 }
-if (Login::rolusuariolog() != 'administrador'){
+if (Login::rolusuariolog() != 'administrador' && Login::rolusuariolog() != 'profesor') {
     header("Location: ./index.php?menu=inicio");
     exit;
 }
@@ -12,9 +12,9 @@ if (Login::rolusuariolog() != 'administrador'){
 ?>
 <!--BODY-->
 <article class="articlefoto">
-    <section class="section100imgadmin">
+    <section class="section100imgexamenes">
 
-        <p class="titulosection">Panel de Administrador</p>
+        <p class="titulosection">Panel de Examenes</p>
 
     </section>
     <section class="section100admin">
@@ -49,12 +49,6 @@ if (Login::rolusuariolog() != 'administrador'){
     <section class="section100admin2">
 
     </section>
-    <section class="section100mensaje">
-        <p>Si deseas crear nuevos tests, o preguntas de exámen, puedes ir al panel de administración de exámenes aquí: </p>
-                                    <form action="index.php?menu=panelexamenes" method="post" id="botonmensaje">
-                                        <label for="submit"></label>
-                                        <input type="submit" value="Ir a Exámenes" name="btnexam" id="btnexam">
-                                    </form>
-    </section>
+
 </article>
     
