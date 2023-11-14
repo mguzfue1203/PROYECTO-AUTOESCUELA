@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var mostrarocultarusuarios = true;
     var btnmostrar = document.getElementById('btnusuarios');
     var cuerpotabla = document.querySelector('.tablaadmin tbody');
-    cuerpotabla.style.display = 'none';
+    cuerpotabla.style.display = 'none'; //Le doy por defecto que no aparezca para evitar que salga mientras el botón nos dice mostrar usuarios, cuando en realidad estaríamos ocultándola.
 //--------------------------------------
 
 //--FUNCIONES------------------------------------
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (mostrarocultarusuarios) {
 
-            btnmostrar.textContent = 'Ocultar Usuarios';
+            btnmostrar.textContent = 'Ocultar Usuarios'; 
             btnmostrar.name = 'descargarusuarios';
             cuerpotabla.style.display = 'table-row-group';
 
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 //--------------------------------------
 
-    function agregarusuario() {
+    function agregarusuario() { //Esta funcion llama a la api para guardar el usuario, creando y almacenando las propiedades de los datos que inteoducimos en los input.
         var nuevousuario = {
             nombre: document.getElementById('nuevousuario').value,
             dni: document.getElementById('nuevousuariodni').value,
@@ -198,36 +198,50 @@ document.addEventListener('DOMContentLoaded', function () {
             rol: document.getElementById('nuevousuariorol').value
         };
 
+        //Aqui realizamos el request, probé a realizar esto con fetch pero creo que es más conveniente usar XMLHttpRequest ya que lo hemos visto en mayor profundidad en clase.
         var xhr = new XMLHttpRequest();
+
         xhr.onreadystatechange = function () {
+
             if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
+
+                if (xhr.status === 200) {   //Si el estatus recibido es 200 OK, nos mostrará una alerta y por consola que todo va bien, y actualiza la tabla.
+
                     console.log('Usuario añadido correctamente.');
                     alert('Usuario añadido correctamente.');
-                    actualizartabla();
+                    actualizarcreartabla();
+
                 } else {
+
                     console.error('Error al agregar el usuario');
+
                 }
             }
         };
 
-        xhr.open('POST', '../Api/guardausuario.php', true);
+        xhr.open('POST', '../Api/guardausuario.php', true); //Llamamos a la api usando POST en este caso ya que vamos a introducir datos.
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(nuevousuario));
     }
 
 //--------------------------------------
 
-    function actualizartabla() {
+    function actualizarcreartabla() {    //Con esta funcion generaremos la tabla en función a los datos que posea la base de datos, recibiendo estos a través de la API y generando a su vez los input para introducir usuarios
+                                        //Al poder actualizar la tabla de cualquier manera, usaremos a través de un botón los inputs para introducir usuarios y actualizar en tiempo real.
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var datos = JSON.parse(xhr.responseText);
-                    console.log(datos);
-                    cuerpotabla.innerHTML = '';
 
-                    datos.forEach(function (usuario, incremento) {
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+
+                if (xhr.status === 200) {   //Si la respuesta es OK:
+
+                    var datos = JSON.parse(xhr.responseText);   //Declaro los datos, decodificados del JSON recibido.
+                    console.log(datos);     //Muestro los datos por consola.
+                    cuerpotabla.innerHTML = '';     //Preparamos el espacio para generar la tabla
+
+                    datos.forEach(function (usuario, incremento) {  //Para cada dato, creo una función en la que pasaré por  parámetro tanto al usuario como un incremento, el usuario para obtener sus propiedades en cada campo refiriéndonos al objeto
+                                                                    //El incremento lo he puesto para que en cada id añada un número más tras pasar por cada usuario del foreach.
                         var row = document.createElement('tr');
                         row.innerHTML = '<td id="usuario' + (incremento + 1) + 'nombre">' + usuario.nombre + '</td>' +
                             '<td id="usuario' + (incremento + 1) + 'dni" datosdni="' + usuario.dni + '">' + usuario.dni + '</td>' +
@@ -243,10 +257,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             '<button type="submit" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar">Eliminar</button>' +
                             '</form>' +
                             '</td>';
-                        cuerpotabla.appendChild(row);
+                        cuerpotabla.appendChild(row);   //Le damos a cuerpotabla los campos de row para que los dibuje.
                     });
 
-                    var inputRow = document.createElement('tr');
+                    var inputrow = document.createElement('tr');
                     inputRow.innerHTML =  '<form method="post" action="">' +
                         '<td><input type="text" id="nuevousuario" class="admininputs" placeholder="Nombre"></td>' +
                         '<td><input type="text" id="nuevousuariodni" class="admininputs" placeholder="DNI"></td>' +
@@ -265,59 +279,77 @@ document.addEventListener('DOMContentLoaded', function () {
                         '</td>' +
                         '</form>';
 
-                        cuerpotabla.appendChild(inputRow);
+                        cuerpotabla.appendChild(inputrow);
 
-                    var btnanadirusuario = document.getElementById('btnanadirusuario');
-                    btnanadirusuario.addEventListener('click', agregarusuario);
+                    var btnanadirusuario = document.getElementById('btnanadirusuario');    //Declaramos el boton para añadir el usuario en los inputs, y le damos un evento que cuando clickemos en él, nos agregue al usuario llamando a la función.
+                    btnanadirusuario.addEventListener('click', agregarusuario());
+
                 } else {
+
                     console.error('Error al obtener los datos de los usuarios.');
+
                 }
             }
         };
 
-        xhr.open('GET', '../Api/solicitausuarios.php', true);
+        xhr.open('GET', '../Api/solicitausuarios.php', true);   //Solicitamos a la API en este caso a través de GET ya que queremos recoger los usuarios.
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send();
+        xhr.send();     //Colocamos este send para que actualice en tiempo real.
     }
 //--EVENTOS------------------------------------
 
 
-    btnmostrar.addEventListener('click', function (evento) {
+    btnmostrar.addEventListener('click', function (evento) {    //Este evento previene de que el botón actue normalmente y en su defecto ejecuta la función para ocultar o mostrar la tabla.
+
         evento.preventDefault();
         mostrarocultardatos();
+
     });
 //--------------------------------------
-    cuerpotabla.addEventListener('click', function (evento) {
-        if (evento.target.classList.contains('btnborrar')) {
+
+    cuerpotabla.addEventListener('click', function (evento) {   //Este evento obtiene a través de click el elemento que posea la clase btnborrar, previene
+                                                                //y declarando la celdadni, obtendremos su atributo datosdni que posee el dni del usuario a borrar, y gracias a la api
+                                                                //donde pasamos por parámetro el dni, comparamos y si es el mismo dni elimina al usuario de la base de datos, y actualiza.
+        if (evento.target.classList.contains('btnborrar')) {    
+
             evento.preventDefault();
             var celdadni = evento.target.closest('tr').querySelector('[datosdni]');
+
             if (celdadni) {
+
                 var dni = celdadni.getAttribute('datosdni');
                 var borrarxhr = new XMLHttpRequest();
 
                 borrarxhr.onreadystatechange = function () {
+
                     if (borrarxhr.readyState === XMLHttpRequest.DONE) {
+
                         if (borrarxhr.status === 200) {
+
                             console.log('Usuario eliminado correctamente.');
                             alert('¡Atención! Tras eliminar un usuario, asegúrate de que su sesión se ha cerrado para que no pueda volver a acceder.');
-                            actualizartabla();
+
+                            actualizarcreartabla();
+
                         } else {
+                            
                             console.error('Error al eliminar el usuario.');
                         }
                     }
                 };
 
-                borrarxhr.open('POST', '../Api/borrausuarios.php', true);
+                borrarxhr.open('POST', '../Api/borrausuarios.php', true);   //Llamada a la API para borrar el usuario a través del dni.
                 borrarxhr.setRequestHeader('Content-Type', 'application/json');
                 var datos = JSON.stringify({ dni: dni });
                 borrarxhr.send(datos);
+
             }
         }
     });
 //--------------------------------------
 
-//--Actualizamos------------------------------------
-    actualizartabla();
+//--Actualizamos de nuevo los cambios------------------------------------
+        actualizarcreartabla();
 });
 
 

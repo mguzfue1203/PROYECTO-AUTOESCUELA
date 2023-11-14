@@ -1,5 +1,5 @@
 <?php
-require_once '../auto/Autocargador.php';
+require_once '../../auto/Autocargador.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $datosusuario = json_decode(file_get_contents("php://input"));

@@ -13,28 +13,31 @@
 </head>
 <body>
     <?php
-        /*$usuarioactual = Login::();
 
+        $usuarioactual = Login::usuarioestalogueado();
+        
         if ($usuarioactual) {
-            echo "Usuario encontrado. Rol: " . $usuarioactual -> getrol(); // Obtener el rol utilizando el método del objeto
-            if ($usuarioactual -> getrol() === "administrador") {
+            $rolusuario = Login::rolusuariolog();
+            if ($rolusuario  === "administrador") {
                 require_once 'adminheader.php';
-                echo "Mostrando header de administrador";
-            } elseif ($usuarioactual -> getrol() === "profesor") {
+
+            } elseif ($rolusuario  === "profesor") {
                 require_once 'profesorheader.php';
-                echo "Mostrando header de profesor";
-            } elseif ($usuarioactual -> getrol() === "usuario") {
+
+            } elseif ($rolusuario === "usuario") {
+
                 require_once 'userheader.php';
-                echo "Mostrando header de usuario";
+
             } else {
-                require_once 'userheader.php'; // Opción por defecto
-                echo "Mostrando header por defecto";
+
+                require_once 'invitadoheader.php'; 
+
             }
         } else {
-            require_once 'userheader.php';
-            echo "No se encontró ningún usuario";
-        }*/
-        require_once 'invitadoheader.php';
+            require_once 'invitadoheader.php';
+
+        }
+
         ?>
     <section>
         <div>

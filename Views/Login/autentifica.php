@@ -16,15 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dni = $_POST['dni'];
         $contrasena = $_POST['contrasena'];
         // Realizamos la verificación de los campos introducidos en la base de datos
-        if (repousuarios::existeusuario($dni, $contrasena)) {
+        $usuario = repousuarios::obtenerdatosusuario($dni, $contrasena);
+        // Compruebo que existe el usuario en la bd
+        if (repousuarios::existeusuario($dni, $contrasena)){
+        if ($usuario) {
             $recuerdame = isset($_POST['recuerdame']);
-            Login::identifica($dni, $contrasena, $recuerdame);
+            Login::identifica($usuario, $recuerdame);
             header('Location: ./index.php?menu=tests');
-            
             exit;
         } else {
             $mensajedeerror = 'DNI o contraseña incorrectos, revisa los campos y vuelve a intentarlo.';
-        }
+        }}
     }
 }
 ?>

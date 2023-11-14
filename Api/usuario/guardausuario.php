@@ -1,5 +1,5 @@
 <?php
-require_once '../auto/Autocargador.php';
+require_once '../../auto/Autocargador.php';
 if ($_SERVER['REQUEST_METHOD']=='POST'){
     $data = json_decode(file_get_contents('php://input'), true);
 
@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     $contrasena = $data['contrasena'];
     $email = $data['email'];
     $rol = $data['rol'];
+
 $usuarios = repousuarios::guardarusuario($nombre, $dni, $apellido1, $apellido2, $fechanacimiento, $contrasena, $email, $rol);
 
 
@@ -33,5 +34,6 @@ $usuarios = repousuarios::guardarusuario($nombre, $dni, $apellido1, $apellido2, 
 
 header('Content-Type: application/json');
 echo json_encode($datosusuario);
+
 }
 ?>

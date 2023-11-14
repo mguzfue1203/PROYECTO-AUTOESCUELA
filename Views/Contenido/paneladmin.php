@@ -4,6 +4,10 @@ if (!Login::usuarioestalogueado()) {
     header("Location: ./index.php?menu=inicio");
     exit;
 }
+if (Login::rolusuariolog() != 'administrador'){
+    header("Location: ./index.php?menu=inicio");
+    exit;
+}
 
 ?>
 <!--BODY-->

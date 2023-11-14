@@ -5,13 +5,12 @@
                 <div class="navlinks">
                 <ul>
                     <li><a href="?menu=inicio" class="onthis">Inicio</a></li>
-                    <li><a href="?menu=registra">Tests</a></li>
-                    <li class="usuarionav espacioizquierda">
-                        <a href="#"></a>
-                    </li>
+                    <li><a href="?menu=tests" class="onthis">Tests</a></li>
+                    <li><a href="?menu=paneladmin">Gestionar Usuarios</a></li>
+                    <li><a href="?menu=panelexamenes">Gestionar Examenes</a></li>
                     <li class="usuarionav">
                     <form action="index.php?menu=logout" method="post" class="centrar-contenido-inicio">
-                        <label for="submit" id="textousuarionav">ADMINHEADER
+                        <label for="submit" id="textousuarionav">
                         <input type="submit" value="Cerrar Sesión" name="btnlogout" id="btnlogout"></label>
                     </form>
                     </li>
