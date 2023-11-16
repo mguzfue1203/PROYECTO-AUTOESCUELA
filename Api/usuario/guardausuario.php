@@ -33,7 +33,12 @@ $usuarios = repousuarios::guardarusuario($nombre, $dni, $apellido1, $apellido2, 
 
 
 header('Content-Type: application/json');
-echo json_encode($datosusuario);
+echo json_encode(['success' => $datosusuario]);
+
+} else {
+
+    http_response_code(400);
+
 
 }
 ?>

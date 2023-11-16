@@ -13,7 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Content-Type: application/json');
         echo json_encode(['success' => $resultado]);
 
-    } }
+    } else {
+
+        http_response_code(400);
+        
+    }
+
+
+}
 
 
 ?>

@@ -491,6 +491,22 @@ table td{
     filter: brightness(100%) contrast(80%) grayscale(30%);
   }
 
+#textocarrousel{
+    
+    text-align: center;
+    position: relative;
+    top: 155px;
+    color: white;
+    font-size: 24pt;
+    font-weight: bold;
+    z-index: 9999;
+
+
+
+}
+
+
+
 /*FOOTER */
 
 footer{

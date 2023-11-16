@@ -30,11 +30,11 @@ if (Login::rolusuariolog() != 'administrador'){
                     <th>Email</th>
                     <th>Rol</th>
                     <th>Acciones</th>
-                    <th id="mostrarusers">
+                    <!--<th id="mostrarusers">
                         <form id="adminform" method="get" action="">
                             <button type="submit" id="btnusuarios" name="cargarusuarios">Mostrar Usuarios</button>                            
                         </form>
-                    </th>
+                    </th>-->
                 </tr>
             </thead>
             <tbody>
