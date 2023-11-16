@@ -132,32 +132,30 @@ public static function guardarusuario($nombre, $dni, $apellido1, $apellido2, $fe
 
 
 //-----------------------------------------------------
-public static function editarusuario($dni, $nuevosDatos) {
+public static function editarusuario($nombre, $dni, $apellido1, $apellido2, $fechanacimiento, $contrasena, $email, $rol) {
     $conexion = GBD::obtenerlaconexion();
 
-    // Verificamos si el usuario existe
-    if (self::existeusuario($dni, $nuevosDatos['contrasena'])) {
+
         $consulta = "UPDATE USUARIO SET NOMBRE = :nombre,APELLIDO1 = :apellido1, APELLIDO2 = :apellido2, FECHANACIMIENTO = :fechanacimiento, CONTRASENA = MD5(:contrasena), EMAIL = :email, ROL = :rol WHERE DNI = :dni";
 
         $sentenciabd = $conexion->prepare($consulta);
 
-        $sentenciabd->bindParam(':nombre', $nuevosDatos['nombre'], PDO::PARAM_STR);
-        $sentenciabd->bindParam(':apellido1', $nuevosDatos['apellido1'], PDO::PARAM_STR);
-        $sentenciabd->bindParam(':apellido2', $nuevosDatos['apellido2'], PDO::PARAM_STR);
-        $sentenciabd->bindParam(':fechanacimiento', $nuevosDatos['fechanacimiento'], PDO::PARAM_STR);
-        $sentenciabd->bindParam(':contrasena', $nuevosDatos['contrasena'], PDO::PARAM_STR);
-        $sentenciabd->bindParam(':email', $nuevosDatos['email'], PDO::PARAM_STR);
-        $sentenciabd->bindParam(':rol', $nuevosDatos['rol'], PDO::PARAM_STR);
-        $sentenciabd->bindParam(':dni', $dni, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':apellido1', $apellido1, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':apellido2', $apellido2, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':fechanacimiento', $fechanacimiento, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':email', $email, PDO::PARAM_STR);
+        $sentenciabd -> bindParam(':rol', $rol, PDO::PARAM_STR);
 
-        return $sentenciabd->execute();
+        return $sentenciabd -> execute();
     }
 
-    return false; // El usuario no existe o la contraseña es incorrecta
 }
 
 
-}
+
 
 
 

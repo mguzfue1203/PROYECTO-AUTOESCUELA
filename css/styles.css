@@ -105,10 +105,21 @@ article {
     font-weight: bold;
 }
 
+.section40index {
+    width: 100%;
+    height: 40vh;
+}
+.section20index {
+    width: 100%;
+    height: 20vh;
+}
+
+
 .section100 {
     width: 100%;
     height: 100vh;
 }
+
 .section100imgindex {
     width: 100%;
     height: 400px;
@@ -181,8 +192,75 @@ article {
 }
 
 .section50 {
-    height: 100vh;
+    height: 60vh;
     width: 50%;
+}
+.divimagen{
+    box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.6);
+    height: 50vh;
+    background-color: #191e28;
+    border-radius: 8px;
+    width: 80%;
+    margin-left: 100px;
+    display: inline-block;
+
+}
+.imagenindex{
+    padding-top: 20px;
+    display:block;
+    margin:auto;
+    width: 20%;
+}
+
+.divimagen p{
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18pt;
+}
+.divimagen .textopequeño{
+    font-weight: initial;
+    font-size: 12pt;
+}
+
+.textopresentaciondiv{
+    margin-left: 50px;
+    color: black;
+    font-size: 18pt;
+    margin-top: 50px;
+    font-weight: bold;
+}
+.lineatexto {
+    width: 10%;
+    display: flex;
+    height: 3px;
+    background-color: #007cb0;
+    margin-top: 10px;
+    margin-left: 50px;
+  }
+
+  .textopresentaciondivdesc{
+    margin-left: 50px;
+    margin-right: 50px;
+    color: black;
+    font-size: 16pt;
+    margin-top: 20px;
+
+}
+
+.listadatos2{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    
+}
+.listadatos2 li{
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
 }
 
 .centrarinicio{

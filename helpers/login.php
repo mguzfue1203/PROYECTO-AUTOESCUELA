@@ -71,7 +71,7 @@ class Login {
     }
 
 }
-
+//-------------------------------------------------------
 
 public static function nombreusuariolog(){
     
@@ -96,9 +96,7 @@ public static function nombreusuariolog(){
 
 }
 
-
-
-
+//-------------------------------------------------------
 
     //Función para guardar la cookie.
 
@@ -109,5 +107,5 @@ public static function nombreusuariolog(){
 
 }
 
-
+//-------------------------------------------------------
 ?>
