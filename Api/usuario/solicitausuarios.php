@@ -26,5 +26,10 @@ foreach ($usuarios as $usuario) {
 
 header('Content-Type: application/json');
 echo json_encode($arrayusuarios);
+} else{
+
+    http_response_code(500);
+    echo json_encode(['error' => 'Error al solicitar el usuario']);
+
 }
 ?>

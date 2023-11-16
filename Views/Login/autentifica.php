@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!--BODY-->
 <div class="bodylogin">
     <div>
-        <form action='' method='post' class="loginregister-form">
+        <form action='' method='post' class="loginregister-form" novalidate>
             <h2>Identifícate</h2>
             <div>
                 <input type='text' name='dni' id='dni' placeholder='DNI' required='required' class="input-field">

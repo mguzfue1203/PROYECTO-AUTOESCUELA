@@ -152,12 +152,44 @@ public static function editarusuario($nombre, $dni, $apellido1, $apellido2, $fec
         return $sentenciabd -> execute();
     }
 
+
+
+
+//----------------------------------------------------
+
+public static function obtenerdatosusuariodni($dni) {
+    $conexion = GBD::obtenerlaconexion();   
+    $consulta = "SELECT * FROM USUARIO WHERE DNI = :dni";
+
+    $sentenciabd = $conexion -> prepare($consulta);
+
+    $sentenciabd -> bindParam(':dni', $dni, PDO::PARAM_STR);
+
+    if ($sentenciabd -> execute()) {
+        if ($sentenciabd -> rowCount() > 0) {
+
+            $fila = $sentenciabd -> fetch(PDO::FETCH_ASSOC);
+            
+            
+            $usuario = new usuario( //Decodifico el JSON en un objeto Usuario, no lo hago con json decode ya que me estaba generando problemas.
+                $fila['NOMBRE'],
+                $fila['DNI'],
+                $fila['APELLIDO1'],
+                $fila['APELLIDO2'],
+                $fila['FECHANACIMIENTO'],
+                $fila['CONTRASENA'],
+                $fila['EMAIL'],
+                $fila['ROL']
+            );
+
+            return $usuario;
+        }
+    }
+    
 }
 
 
-
-
-
+}
 
 
 

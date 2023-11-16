@@ -1,7 +1,8 @@
 <?php
 require_once '../../auto/Autocargador.php';
 if ($_SERVER['REQUEST_METHOD']=='POST'){
-    $datos = json_decode(file_get_contents('php://input'), true);
+    
+    $datos = json_decode(file_get_contents('php://input'), true); //Aqui ponemos true para que proporcione un array asociativo
 
     // Guarda los datos del nuevo usuario en la base de datos
     $nombre = $datos['nombre'];
@@ -38,7 +39,7 @@ echo json_encode(['success' => $datosusuario]);
 } else {
 
     http_response_code(400);
-
-
+    echo json_encode(['error' => 'Error al guardar el usuario']);
 }
+
 ?>

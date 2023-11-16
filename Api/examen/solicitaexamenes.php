@@ -23,7 +23,6 @@ echo json_encode($arrayexamenes);
 
 
     http_response_code(400);
-
-
+    echo json_encode(['error' => 'Error al solicitar los examenes']);
 }
 ?>

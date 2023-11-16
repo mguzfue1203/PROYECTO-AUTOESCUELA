@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 <!--BODY-->
 <div class="bodyregister">
 <div class="loginregister-form">
-    <form action="" method="post">
+    <form action="" method="post"  novalidate>
         <h1>Regístrate</h1>
         <div>
             <input type="text" name="nombre" placeholder="Nombre" required="required" class="input-field" id="nombre-input">

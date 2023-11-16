@@ -104,6 +104,15 @@ article {
     font-size: 24pt;
     font-weight: bold;
 }
+.titulosection2{
+    text-align: center;
+    position: relative;
+    top: 200px;
+    color: black;
+    font-size: 24pt;
+    font-weight: bold;
+}
+
 
 .section40index {
     width: 100%;
@@ -159,7 +168,12 @@ article {
     margin: 20px;
     
 }
-
+.section100examenes {
+    width: 100%;
+    height: auto;
+    margin: 20px;
+    
+}
 .section100404 {
     width: 100%;
     height: 600px;
@@ -337,6 +351,16 @@ article {
     margin: 0 auto;
     width: auto;
 
+}
+
+.tablaexamenes{
+    text-align: center;
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+    width: auto;
 }
 .admininputs{
     width: 100%;

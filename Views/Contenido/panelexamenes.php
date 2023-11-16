@@ -14,31 +14,25 @@ if (Login::rolusuariolog() != 'administrador' && Login::rolusuariolog() != 'prof
 <article class="articlefoto">
     <section class="section100imgexamenes">
 
-        <p class="titulosection">Panel de Examenes</p>
+        <p class="titulosection">Panel de Exámenes</p>
 
     </section>
-    <section class="section100admin">
-        <table class="tablaadmin">
+    <section class="section100">
+
+        <p class="titulosection2">En construcción</p>
+
+    </section>
+    <section class="section100examenes">
+        
+        <table class="tablaexamenes">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>DNI</th>
-                    <th>Apellido 1</th>
-                    <th>Apellido 2</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Contraseña</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                    <th id="mostrarusers">
-                        <form id="adminform" method="get" action="">
-                            <button type="submit" id="btnusuarios" name="cargarusuarios">Mostrar Usuarios</button>                            
-                        </form>
-                    </th>
+
+
                 </tr>
             </thead>
             <tbody>
-                <!--Aqui voy a pintar a todos los usuarios-->
+                <!--Aqui voy a pintar a todos los exámenes-->
             </tbody>
         </table>
         

@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
                 .then((response) => {
                 if (!response.ok) {
-                    throw new Error('Error al obtener los datos de los usuarios.');
+                    throw new Error('Error al obtener los datos de los usuarios.'); //Lanzamos el error para, si no se da una respuesta correcta, aparezca el error.
                 }
                 return response.json();
                 })
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 '<td id="usuario' + (incremento + 1) + 'rol">' + usuario.rol + '</td>' +
                                 '<td>' +
                                 '<form method="post" action="">' +
-                                '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar"><p class="fa fa-edit"></p></button>' +
+                                '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar" onclick="editarUsuario(' + usuario.dni + ')"><p class="fa fa-edit"></p></button>' +
                                 '<button type="submit" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar"><p class="fa fa-times"></p></button>' +
                                 '</form>' +
                                 '</td>';
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then((response) => {
                 if (!response.ok) {
 
-                throw new Error('Error al agregar el usuario');
+                throw new Error('Error al agregar el usuario'); //Lanzamos el error para, si no se da una respuesta correcta, aparezca el error.
 
             }
 
@@ -135,6 +135,56 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
         actualizartablaadmin();
+
+
+
+    //--------------------------------------
+
+        function borrarusuario() {
+            cuerpotabla.addEventListener('click', function (evento) {   //Este evento obtiene a través de click el elemento que posea la clase btnborrar, previene
+                                                                        //y declarando la celdadni, obtendremos su atributo datosdni que posee el dni del usuario a borrar, y gracias a la api
+                                                                        //donde pasamos por parámetro el dni, comparamos y si es el mismo dni elimina al usuario de la base de datos, y actualiza.
+                if (evento.target.classList.contains('btnborrar')) {
+        
+                    evento.preventDefault();
+                    var celdadni = evento.target.closest('tr').querySelector('[datosdni]');
+        
+                    if (celdadni) {
+                        var dni = celdadni.getAttribute('datosdni');
+                        fetch('../Api/usuario/borrausuarios.php', {
+    
+                            method: 'POST',
+                            headers:{
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ dni: dni }),
+    
+                        })
+                        .then((response) => {
+                            if (!response.ok) {
+    
+                                throw new Error('Error al eliminar el usuario.');   //Lanzamos el error para, si no se da una respuesta correcta, aparezca el error.
+    
+                            }
+    
+                            console.log('Usuario eliminado correctamente.');
+                            alert('¡Atención! Tras eliminar un usuario, asegúrate de que su sesión se ha cerrado para que no pueda volver a acceder.');
+                            actualizartablaadmin();
+    
+                        })
+                        .catch((error) => {
+    
+                            console.error(error.message);
+    
+                        });
+                    }
+                }
+            });
+        }
+    
+        borrarusuario();
+    
+    
     
     //--EVENTOS------------------------------------
     
@@ -149,48 +199,31 @@ document.addEventListener('DOMContentLoaded', function () {
     
     //--------------------------------------
 
-        cuerpotabla.addEventListener('click', function (evento) {   //Este evento obtiene a través de click el elemento que posea la clase btnborrar, previene
-                                                                    //y declarando la celdadni, obtendremos su atributo datosdni que posee el dni del usuario a borrar, y gracias a la api
-                                                                    //donde pasamos por parámetro el dni, comparamos y si es el mismo dni elimina al usuario de la base de datos, y actualiza.
-            if (evento.target.classList.contains('btnborrar')) {
-    
-                evento.preventDefault();
-                var celdadni = evento.target.closest('tr').querySelector('[datosdni]');
-    
-                if (celdadni) {
-                    var dni = celdadni.getAttribute('datosdni');
-                    fetch('../Api/usuario/borrausuarios.php', {
 
-                        method: 'POST',
-                        headers:{
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ dni: dni }),
+});
 
-                    })
-                    .then((response) => {
-                        if (!response.ok) {
 
-                            throw new Error('Error al eliminar el usuario.');
 
-                        }
 
-                        console.log('Usuario eliminado correctamente.');
-                        alert('¡Atención! Tras eliminar un usuario, asegúrate de que su sesión se ha cerrado para que no pueda volver a acceder.');
-                        actualizartablaadmin();
 
-                    })
-                    .catch((error) => {
 
-                        console.error(error.message);
 
-                        });
-                    
-                    }
 
-                }
-            });
-        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

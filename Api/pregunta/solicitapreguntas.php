@@ -26,7 +26,6 @@ echo json_encode($arraypreguntas);
 
 
     http_response_code(400);
-
-
+    echo json_encode(['error' => 'Error al solicitar las preguntas']);
 }
 ?>

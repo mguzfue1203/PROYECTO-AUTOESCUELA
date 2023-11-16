@@ -12,7 +12,8 @@ if (!Login::usuarioestalogueado()) {
                     <p class="titulosection">Tests</p>
         </section>
         <section class="section100">
-        <h1>PRUEBA SECTION 100%</h1>
-            
-    </section>
+
+            <p class="titulosection2">En construcción</p>
+
+        </section>
 </article>
