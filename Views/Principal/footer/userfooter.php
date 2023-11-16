@@ -2,7 +2,7 @@
             <div class="footerdiv">
 
                 <div class="redes">
-                   <a href="https://www.instagram.com/marc_fnts/"><i class="fab fa-instagram"></i></a>
+                   <a href="#"><i class="fab fa-instagram"></i></a>
                    <a href="#"><i class="fab fa-twitter"></i></a>
                    <a href="#"><i class="fab fa-facebook"></i></a>
                    <a href="https://www.linkedin.com/in/marcosguzmanfuentes/"><i class="fab fa-linkedin"></i></a>
