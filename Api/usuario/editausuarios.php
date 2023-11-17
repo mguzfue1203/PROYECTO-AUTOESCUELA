@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             http_response_code(200);
             echo json_encode(['mensaje' => 'Usuario editado correctamente']);
         } else {
-            http_response_code(500);
+            http_response_code(400);
             echo json_encode(['error' => 'Error al editar el usuario']);
         }
     }
