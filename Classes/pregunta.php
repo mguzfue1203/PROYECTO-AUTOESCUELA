@@ -10,7 +10,8 @@ class pregunta {
 
 //--Constructor-----------------------------------------------------
 
-public function __construct($enunciado, $respuesta, $url, $tipourl){
+public function __construct($id, $enunciado, $respuesta, $url, $tipourl){
+    $this -> id = $id;
     $this -> enunciado = $enunciado;
     $this -> respuesta = $respuesta;
     $this -> url = $url;

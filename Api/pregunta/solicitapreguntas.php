@@ -9,6 +9,7 @@ $arraypreguntas = [];
 foreach ($preguntas as $pregunta) {
 
     $datoscadapregunta = [
+        'id' => $pregunta -> getid(),
         'enunciado' => $pregunta -> getenunciado(),
         'respuesta' => $pregunta -> getrespuesta(),
         'url' => $pregunta -> geturl(),

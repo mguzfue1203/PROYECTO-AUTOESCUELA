@@ -15,6 +15,7 @@ public static function obternerpreguntas(){
             
         while ($fila = $sentenciabd -> fetch(PDO::FETCH_ASSOC)) {
             $pregunta = new pregunta(
+                $fila['idPREGUNTA'],
                 $fila['ENUNCIADO'],
                 $fila['RESPUESTA'],
                 $fila['URL'],
@@ -38,7 +39,18 @@ public static function obternerpreguntas(){
 
 
 //-------------------------------------------------------
+public static function borrarpregunta($id) {
+    $conexion = GBD::obtenerlaconexion();   
+    $consulta = "DELETE FROM PREGUNTA WHERE id = :id";
 
+    $sentenciabd = $conexion->prepare($consulta);
+    $sentenciabd->bindParam(':id', $id, PDO::PARAM_STR);
+
+    if ($sentenciabd->execute()) {
+        return true; 
+    }
+    return false;
+}
 
 
 //-------------------------------------------------------

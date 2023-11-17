@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     //--------------------------------------
     function agregarusuarioadmin() {     //Esta funcion llama a la api para guardar el usuario, creando y almacenando las propiedades de los datos que inteoducimos en los input.
+        
         var nuevousuario = {
             nombre: document.getElementById('nuevousuario').value,
             dni: document.getElementById('nuevousuariodni').value,
