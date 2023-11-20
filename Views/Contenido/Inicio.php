@@ -13,8 +13,8 @@
                 <div class="lineatexto"></div>
                 <p class="textopresentaciondivdesc">En MarAutoescuelas, nos enorgullece ser tu socio confiable en el emocionante viaje hacia la obtención de tu carnet de conducir. 
                 </p>
-                <p class="textopresentaciondivdesc">Somos <span>tu puente hacia la libertad</span> en la carretera y la seguridad en cada kilómetro que recorras.</p>
-                <p class="textopresentaciondivdesc">Nuestro compromiso es proporcionarte una <span>experiencia de aprendizaje práctica, efectiva y emocionante.</span> Contamos con <span>instructores altamente capacitados</span> y apasionados que te guiarán con paciencia y dedicación a lo largo de cada lección.
+                <p class="textopresentaciondivdesc">Somos <span class="bold">tu puente hacia la libertad</span> en la carretera y la seguridad en cada kilómetro que recorras.</p>
+                <p class="textopresentaciondivdesc">Nuestro compromiso es proporcionarte una <span class="bold">experiencia de aprendizaje práctica, efectiva y emocionante.</span> Contamos con <span class="bold">instructores altamente capacitados</span> y apasionados que te guiarán con paciencia y dedicación a lo largo de cada lección.
                 <p class="textopresentaciondivdesc">Desde los conceptos básicos hasta las habilidades avanzadas de conducción, estamos aquí para ayudarte a sentirte seguro y competente al volante.</p>
                 
             </div>

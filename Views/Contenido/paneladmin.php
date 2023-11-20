@@ -43,10 +43,7 @@ if (Login::rolusuariolog() != 'administrador'){
         </table>
         
     </section>
-    <section class="section100admin2">
-
-    </section>
-    <section class="section100admin2">
+    <section class="section100admin3">
 
     </section>
     <section class="section100mensaje">

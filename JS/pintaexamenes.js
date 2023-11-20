@@ -34,25 +34,58 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(x => x.json())
                     .then(y => {
                         for (let incremento = 0; incremento < y.length; incremento++) {
+
                             var pregcopy = pregunta.cloneNode(true);
+                            
                             pregcopy.getElementsByClassName("id")[0].innerHTML = y[incremento].enunciado;
-                            pregcopy.getElementsByClassName("enunciado")[0].innerHTML = y[incremento].enunciado;
-                            pregcopy.getElementsByClassName("respuesta")[0].innerHTML = y[incremento].respuesta;
+
+                            var opciones = JSON.parse(y[incremento].respuesta).opciones;
+
+                            for (let incremento2 = 0; incremento2 < opciones.length; incremento2++) {
+
+                                var radioinput = document.createElement("input");
+                                radioinput.type = "radio";
+                                radioinput.name = "respuesta_" + y[incremento].id;
+                                radioinput.value = incremento2 + 1;
+                            
+                                var label = document.createElement("label");
+                                label.appendChild(radioinput);
+                                label.appendChild(document.createTextNode(opciones[incremento2]));
+                            
+                                var labelcnt = document.createElement("div");
+                                labelcnt.appendChild(label);
+                            
+                                pregcopy.getElementsByClassName("respuesta")[0].appendChild(labelcnt);
+
+                            }                            
                             pregcopy.getElementsByClassName("url")[0].innerHTML = y[incremento].url;
                             pregcopy.getElementsByClassName("tipourl")[0].innerHTML = y[incremento].tipourl;
 
                             var pregpadre = pregcopy;
                             while (pregpadre && !pregpadre.classList.contains("pregunta")) {
+
                                 var dudaElement = pregcopy.getElementsByClassName("duda")[0];
+
                                 if (dudaElement) {
                                     dudaElement.checked = false;
                                 }
+
                                 pregpadre = pregpadre.parentNode;
+
+                                
                             }
+
+                            pregcopy.getElementsByClassName("borrar")[0].addEventListener("click", function () {
+                                var opcionesRadio = this.closest('.pregunta').querySelectorAll('input[type="radio"]');
+                                
+                                opcionesRadio.forEach(function (opcion) {
+                                    opcion.checked = false;
+                                });
+                            });
+                            
                             divexamen.appendChild(pregcopy);
                         }
                     });
             });
     }
 });
-                
