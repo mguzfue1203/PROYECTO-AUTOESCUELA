@@ -26,9 +26,10 @@ if (Login::rolusuariolog() != 'administrador' && Login::rolusuariolog() != 'prof
         
         <table class="tablaexamenes">
             <thead>
-                <tr>
-
-
+                <tr>    
+                    <th>Preguntas</th>
+                    <th>Respuestas</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
