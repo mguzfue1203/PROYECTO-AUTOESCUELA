@@ -25,7 +25,7 @@ class GBD
         public static function obtenerlaconexion(){
             try {
     
-                $conexion = new PDO("mysql:host=localhost:3305;dbname=autoescuela", "root", "12345");
+                $conexion = new PDO("mysql:host=localhost:3306;dbname=autoescuela", "root", "12345");
                 return $conexion;
             }
             catch (PDOException $error) {

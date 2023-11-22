@@ -57,14 +57,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                 '<td id="usuario' + (incremento + 1) + 'rol">' + usuario.rol + '</td>' +
                                 '<td>' +
                                 '<form method="post" action="">' +
-                                '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar" onclick="editarUsuario(' + usuario.dni + ')"><p class="fa fa-edit"></p></button>' +
+                                '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar" onclick="editarusuario(' + usuario.dni + ')"><p class="fa fa-edit"></p></button>' +
                                 '<button type="submit" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar"><p class="fa fa-times"></p></button>' +
                                 '</form>' +
                                 '</td>';
                             cuerpotabla.appendChild(row);      //Le damos a cuerpotabla los campos de row para que los dibuje.
                         });
     
-                        var inputrow = document.createElement('tr');
+                        var inputrow = document.createElement('tr');    //Creo un row de inputs
                         inputrow.innerHTML =  '<form method="post" action="">' +
                             '<td><input type="text" id="nuevousuario" class="admininputs" placeholder="Nombre"></td>' +
                             '<td><input type="text" id="nuevousuariodni" class="admininputs" placeholder="DNI"></td>' +
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             rol: document.getElementById('nuevousuariorol').value
         };
     
-        //Aqui realizamos el request
+
         fetch('../Api/usuario/guardausuario.php', {
 
             method: 'POST',
@@ -185,20 +185,114 @@ document.addEventListener('DOMContentLoaded', function () {
     
         borrarusuario();
     
+    //---------------------------------------------
+
+    function editarusuario() {
+        cuerpotabla.addEventListener('click', function (evento) {
+            if (evento.target.classList.contains('btneditar')) {
+                evento.preventDefault();
+                
+
+                var filaseleccionada = evento.target.closest('tr'); //Primero consigo la fila
+
+                
+                var dni = filaseleccionada.querySelector('[datosdni]').getAttribute('datosdni');    //Consigo el dni a través del botón
+
+                
+                var editarrow = document.createElement('tr');
+                editarrow.innerHTML = '<td><input type="text" class="admininputs" id="editarnombre" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' + //En el queryselector, busco un id cuya cadena de texto sea usuario
+                    '<td><input type="text" class="admininputs" id="editardni" value="' + dni + '" readonly></td>' +    //COLOCO READONLY PARA QUE NO PUEDA EDITAR EL DNI
+                    '<td><input type="text" class="admininputs" id="editarapellido1" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' +
+                    '<td><input type="text" class="admininputs" id="editarapellido2" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' +
+                    '<td><input type="date" class="admininputs" id="editarfechanacimiento" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' +
+                    '<td><input type="password" class="admininputs" id="editarcontraseña" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' +
+                    '<td><input type="email" class="admininputs" id="editaremail" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' +
+                    '<td><select id="editarrol" class="admininputs"><option value="administrador">Administrador</option><option value="profesor">Profesor</option><option value="usuario">Usuario</option></select></td>' +
+                    '<td><button id="btnguardar" class="fas fa-save"></button></td>';
+
+                // Insertar el nuevo row de edición debajo de la fila actual
+                filaseleccionada.after(editarrow);
+
+                evento.target.style.display = 'none';
+
+                // Rellenar campos con valores actuales
+                var rellenoinputs = editarrow.querySelectorAll('input, select');
+
+                filaseleccionada.querySelectorAll('[id^="usuario"]').forEach(function (campo, incremento) {
+
+                    rellenoinputs[incremento].value = campo.textContent;    //Uso textContent para meter los datos en cada campo, primero recogiendo los datos de editarrow y luego pintando en los inputs
+
+                });
+
+                
+                var btnguardar = editarrow.querySelector('#btnguardar');    //Capturo el id del boton guardar para que al hacerle click, llamemos a la función que guarda los cambios
+
+                btnguardar.addEventListener('click', function () {
+
+                    guardaredicion(dni);
+
+                });
+            }
+        });
+    }
+
+    function guardaredicion(dni) {
+        
+        var nuevonombre = document.getElementById('editarnombre').value;    //Obtengo los datos por id html tras seleccionar el dni
+        var nuevodni = document.getElementById('editardni').value;
+        var nuevoapellido1 = document.getElementById('editarapellido1').value;
+        var nuevoapellido2 = document.getElementById('editarapellido2').value;
+        var nuevafechanacimiento = document.getElementById('editarfechanacimiento').value;
+        var nuevacontrasena = document.getElementById('editarcontraseña').value;
+        var nuevoemail = document.getElementById('editaremail').value;
+        var nuevorol = document.getElementById('editarrol').value;
+
+        
+        var usuarioeditado = {  //Declaro esta variable en la que introduzco los datos del usuario, preparándolos para mandar estos a través de la api a la bd
+            nombre: nuevonombre,
+            dni: nuevodni,
+            apellido1: nuevoapellido1,
+            apellido2: nuevoapellido2,
+            fechanacimiento: nuevafechanacimiento,
+            contrasena: nuevacontrasena,
+            email: nuevoemail,
+            rol: nuevorol
+        };
+
+        
+        fetch('../Api/usuario/editausuarios.php', {
+            method: 'PUT',
+            headers: {
+
+                'Content-Type': 'application/json',
+
+            },
+
+            body: JSON.stringify(usuarioeditado),   //Mando por json el usuarioeditado
+
+        })
+
+            .then((response) => {
+
+                if (!response.ok) {
+
+                    throw new Error('Error al actualizar el usuario.');
+
+                }
+
+                console.log('Usuario actualizado correctamente.');
+                alert('Usuario actualizado correctamentr.');
+                actualizartablaadmin();
+
+            })
+            .catch((error) => {
+                console.error(error.message);
+            });
+    }
+
     
-    
-    //--EVENTOS------------------------------------
-    
-    
-        /*btnmostrar.addEventListener('click', function (evento) {    //Este evento previene de que el botón actue normalmente y en su defecto ejecuta la función para ocultar o mostrar la tabla.
-    
-            evento.preventDefault();
-            mostrarocultardatosadmin();
-    
-        });*/
-    
-    
-    //--------------------------------------
+    editarusuario();
+
 
 
 });

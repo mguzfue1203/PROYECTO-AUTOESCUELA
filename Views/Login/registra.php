@@ -11,11 +11,11 @@ if (Login::usuarioestalogueado()) {
 
 //Declaro la variable para manejar el mensaje de error.
 $mensajedeerror = '';
-
+//Preparo la clase validacion obj
 $validador = new Validacion();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-
+    //Le paso al validador los datos del form
     $validador -> Requerido('nombre');
     $validador -> Requerido('dni');
     $validador -> Dni('dni');

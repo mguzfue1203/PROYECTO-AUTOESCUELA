@@ -1,6 +1,8 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+require_once '../../auto/Autocargador.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $datos = json_decode(file_get_contents('php://input'), true);
 
     if (isset($datos['dni'])) {
@@ -9,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $apellido1 = $datos['apellido1'];
         $apellido2 = $datos['apellido2'];
         $fechanacimiento = $datos['fechanacimiento'];
-        $contrasena = md5($datos['contrasena']); 
+        $contrasena = $datos['contrasena']; 
         $email = $datos['email'];
         $rol = $datos['rol'];
 
