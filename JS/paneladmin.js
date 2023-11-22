@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 '<td id="usuario' + (incremento + 1) + 'rol">' + usuario.rol + '</td>' +
                                 '<td>' +
                                 '<form method="post" action="">' +
-                                '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar" onclick="editarusuario(' + usuario.dni + ')"><p class="fa fa-edit"></p></button>' +
-                                '<button type="submit" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar"><p class="fa fa-times"></p></button>' +
+                                '<button type="button" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar" onclick="editarusuario(' + usuario.dni + ')"><p class="fa fa-edit"></p></button>' +
+                                '<button type="button" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar"><p class="fa fa-times"></p></button>' +
                                 '</form>' +
                                 '</td>';
                             cuerpotabla.appendChild(row);      //Le damos a cuerpotabla los campos de row para que los dibuje.
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             '<option value="usuario">Usuario</option>' +
                             '</td>' +
                             '<td>' +
-                            '<button id="btnanadirusuario" class="btnanadirusuario">Añadir</button>' +
+                            '<button type="button" id="btnanadirusuario" class="btnanadirusuario">Añadir</button>' +
                             '</td>' +
                             '</form>';
     
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     '<td><input type="password" class="admininputs" id="editarcontraseña" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' +
                     '<td><input type="email" class="admininputs" id="editaremail" value="' + filaseleccionada.querySelector('[id^="usuario"]').textContent + '"></td>' +
                     '<td><select id="editarrol" class="admininputs"><option value="administrador">Administrador</option><option value="profesor">Profesor</option><option value="usuario">Usuario</option></select></td>' +
-                    '<td><button id="btnguardar" class="fas fa-save"></button></td>';
+                    '<td><button type="button" id="btnguardar" class="fas fa-save"></button></td>';
 
                 // Insertar el nuevo row de edición debajo de la fila actual
                 filaseleccionada.after(editarrow);
