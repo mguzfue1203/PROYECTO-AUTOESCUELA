@@ -1,5 +1,6 @@
 <?php
 //--MANEJO FORMULARIO-------------------------------
+    $validador = new Validacion();
 //--REQUIRES-------------------------------
 //Si el usuario está logueado redirige al index.
 if (Login::usuarioestalogueado()) {
@@ -9,13 +10,23 @@ if (Login::usuarioestalogueado()) {
 
 //Declaro la variable para manejar el mensaje de error.
 $mensajedeerror = '';
+$validacion = new Validacion();
 
 //Si efectivamente el método es post, y hacemos submit, verifica que el usuario y contraseña coincidan con el registrado en la bd a través de la función de la clase usuario, si es así loguea y entra a la página de tests. Si no muestra un mensaje de error.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
+
         $dni = $_POST['dni'];
+        $validador -> Dni('dni');
+
         $contrasena = $_POST['contrasena'];
-        
+        $validador -> Requerido('contrasena');
+
+        if ($validador->ValidacionPasada()) {
+
+            $dni = $_POST['dni'];
+            $contrasena = $_POST['contrasena'];
+
         if (repousuarios::existeusuario($dni, $contrasena)){
         // Realizamos la verificación de los campos introducidos en la base de datos
         $usuario = repousuarios::obtenerdatosusuario($dni, $contrasena);
@@ -32,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+}
 ?>
 
 <!--BODY-->
@@ -40,10 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action='' method='post' class="loginregister-form" novalidate>
             <h2>Identifícate</h2>
             <div>
-                <input type='text' name='dni' id='dni' placeholder='DNI' required='required' class="input-field">
+                <input type='text' name='dni' id='dni' placeholder='DNI' class="input-field" value="<?php echo $validador->getValor('dni'); ?>">
+                <?php echo $validador -> ImprimirError('dni'); ?>
             </div>
             <div>
-                <input type='password' name='contrasena' id='contrasena' placeholder='Contraseña' required='required' class="input-field">
+                <input type='password' name='contrasena' id='contrasena' placeholder='Contraseña' class="input-field" >
+                <?php echo $validador -> ImprimirError('contrasena'); ?>
             </div>
             <div>
                 <?php

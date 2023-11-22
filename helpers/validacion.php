@@ -179,5 +179,5 @@ class Validacion
         return
         isset($_POST[$campo]) && $_POST[$campo]==$valor?'checked':'';
     }
-     
+
 }

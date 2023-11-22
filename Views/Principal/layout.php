@@ -1,3 +1,4 @@
+<?php require_once './helpers/validacion.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 

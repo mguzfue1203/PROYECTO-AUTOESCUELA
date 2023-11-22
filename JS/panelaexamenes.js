@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then((preguntas) => {
+
                 cuerpotabla.innerHTML = '';
 
                 preguntas.forEach(function (pregunta, incremento) {
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         '<td>' + pregunta.respuesta + '</td>' +
                         '<td>' +
                         '<form method="post" action="">' +
-                        '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar" onclick="editarPregunta(' + pregunta.id + ')"><p class="fa fa-edit"></p></button>' +
+                        '<button type="submit" id="btneditar' + (incremento + 1) + '" name="btneditar" class="btneditar" onclick="editarpregunta(' + pregunta.id + ')"><p class="fa fa-edit"></p></button>' +
                         '<button type="submit" id="btnborrar' + (incremento + 1) + '" name="btnborrar" class="btnborrar"><p class="fa fa-times"></p></button>' +
                         '</form>' +
                         '</td>';
@@ -34,7 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 var inputrow = document.createElement('tr');
                 inputrow.innerHTML = '<form method="post" action="">' +
                     '<td><input type="text" id="nuevapregunta" class="admininputs" placeholder="Enunciado"></td>' +
-                    '<td><input type="text" id="nuevarespuesta" class="admininputs" placeholder="Respuesta"></td>' +
+                    '<td><input type="text" id="nuevarespuesta1" class="admininputs" placeholder="Respuesta 1"></td>' +
+                    '<td><input type="text" id="nuevarespuesta2" class="admininputs" placeholder="Respuesta 2"></td>' +
+                    '<td><input type="text" id="nuevarespuesta3" class="admininputs" placeholder="Respuesta 3"></td>' +
+                    '<td><input type="text" id="nuevacorrecta" class="admininputs" placeholder="Respuesta"></td>' +
                     '<td>' +
                     '<button id="btnanadirpregunta" class="btnanadirusuario">Añadir</button>' +
                     '</td>' +
@@ -51,23 +55,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function agregarpregunta() {
-        var nuevaPregunta = {
-            enunciado: document.getElementById('nuevapregunta').value,
-            respuesta: document.getElementById('nuevarespuesta').value,
+        var enunciado = document.getElementById('nuevapregunta').value;
+        var respuesta1 = document.getElementById('nuevarespuesta1').value;
+        var respuesta2 = document.getElementById('nuevarespuesta2').value;
+        var respuesta3 = document.getElementById('nuevarespuesta3').value;
+        var respuesta_correcta = document.getElementById('nuevacorrecta').value;
+    
+        var nuevapregunta = {
+            enunciado: enunciado,
+            respuesta1: respuesta1,
+            respuesta2: respuesta2,
+            respuesta3: respuesta3,
+            respuesta_correcta: respuesta_correcta,
         };
-
+    
         fetch('../Api/pregunta/solicitapreguntas.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(nuevaPregunta),
+            body: JSON.stringify(nuevapregunta),
         })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Error al agregar la pregunta');
                 }
-
+    
                 console.log('Pregunta añadida correctamente.');
                 alert('Pregunta añadida correctamente.');
                 actualizartablapreguntas();
@@ -76,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error(error.message);
             });
     }
+    
 
     function borrarpregunta() {
         cuerpotabla.addEventListener('click', function (evento) {
