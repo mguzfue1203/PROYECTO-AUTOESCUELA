@@ -1,6 +1,7 @@
+/*---GENERAL---*/
+/*----------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-
+/*----------------------------------------------------*/
 *{
     margin: 0;
     padding: 0;
@@ -10,9 +11,12 @@
     font-family: 'Montserrat', sans-serif;
     
 }
+/*----------------------------------------------------*/
 
-/*NAV*/
 
+
+/*---NAV---*/
+/*--ELEMENTOS NAVBAR--------------------------------------------------*/
 .navbar{
     position: fixed;
     padding: 25px;
@@ -26,39 +30,39 @@
     align-items: center;
     z-index: 9999;
 }
-
+/*----------------------------------------------------*/
 .navbar a {
     color: rgba(255,255,255, 0.8);
 }
-
+/*----------------------------------------------------*/
 .navbar .logo {
     font-size: 18pt;
     font-weight: 600;
 }
-
+/*----------------------------------------------------*/
 .navbar .navlinks{
     display: flex;
     align-items: center;
 }
-
+/*----------------------------------------------------*/
 .navbar .navlinks ul{
     display: flex;
 }
-
+/*----------------------------------------------------*/
 .navbar .navlinks ul li{
     margin: 0 25px;
 }
-
+/*----------------------------------------------------*/
 .navbar .navlinks ul li.onthis a{
     color: white;
     font-weight: 600;
 }
-
+/*----------------------------------------------------*/
 nav li a:hover{
     color: rgba(255,255,255,1);
     transition: all 0.3s ease 0s;
 }
-
+/*--ELEMENTOS LOGO--------------------------------------------------*/
 #logo{
     margin-left: 4px;
     width: 22px;
@@ -66,26 +70,47 @@ nav li a:hover{
     cursor: pointer;
     
 }
-
+/*----------------------------------------------------*/
 #textlogo{
     color: white;
     padding-left: 5px;
     font-size: 18pt;
     font-weight: 600;
 }
+/*--OTROS ELEMENTOS--------------------------------------------------*/
 #textousuarionav{
     margin-right: 10px;
     color: white;
 }
-
+/*----------------------------------------------------*/
 .usuarionav{
     display: inline-block;
+}
+/*--DROPDOWN NAV--------------------------------------------------*/
+#dropdown {
+    position: relative;
+    display: inline-block;
+}
+/*----------------------------------------------------*/
+.dropdown-content {
+    border-radius: 8px;
+    display: none;
+    position: absolute;
+    background-color: rgba(34,45,90, 0.7);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+    padding: 12px 16px;
+    z-index: 1;
+}
+/*----------------------------------------------------*/
+#dropdown:hover .dropdown-content {
+    display: block;
 }
 
 
 
 
-/*MAIN*/
+/*---MAIN---*/
+/*--ELEMENTOS ARTICLE Y SECTION--------------------------------------------------*/
 article {
     display: flex;
     flex-wrap: wrap;
@@ -93,106 +118,94 @@ article {
     padding-top: 100px;
     margin: 0 auto;
 }
+/*----------------------------------------------------*/
 .articlefoto{
     padding-top: 0px;
 }
-.titulosection{
-    text-align: center;
-    position: relative;
-    top: 200px;
-    color: white;
-    font-size: 24pt;
-    font-weight: bold;
-}
-.titulosection2{
-    text-align: center;
-    position: relative;
-    top: 200px;
-    color: black;
-    font-size: 24pt;
-    font-weight: bold;
-}
-
-
+/*----------------------------------------------------*/
 .section40index {
     width: 100%;
     height: 40vh;
 }
+/*----------------------------------------------------*/
 .section20index {
     width: 100%;
     height: 20vh;
 }
-
-
+/*----------------------------------------------------*/
 .section100 {
     width: 100%;
     height: 100vh;
 }
-
+/*----------------------------------------------------*/
 .section100imgindex {
     width: 100%;
     height: 400px;
     background: url('../Assets/img/coche.jpg') center center no-repeat;
     background-size: cover;
 }
+/*----------------------------------------------------*/
 .section100imgtests {
     width: 100%;
     height: 400px;
     background: url('../Assets/img/coche2.jpg') center center no-repeat;
     background-size: cover;
 }
+/*----------------------------------------------------*/
 .section100imgadmin {
     width: 100%;
     height: 400px;
     background: url('../Assets/img/administrador.jpg') center center no-repeat;
     background-size: cover;
 }
-
+/*----------------------------------------------------*/
 .section100imgexamenes {
     width: 100%;
     height: 400px;
     background: url('../Assets/img/autoescuela.jpg') center center no-repeat;
     background-size: cover;
 }
-
+/*----------------------------------------------------*/
 .section100img404 {
     width: 100%;
     height: 400px;
     background: url('../Assets/img/404.jpg') center center no-repeat;
     background-size: cover;
 }
-
+/*----------------------------------------------------*/
 .section100admin {
     width: 100%;
     height: auto;
     margin: 20px;
     
 }
+/*----------------------------------------------------*/
 .section100examenes {
     width: 100%;
     height: auto;
     margin: 20px;
     
 }
+/*----------------------------------------------------*/
 .section100404 {
     width: 100%;
     height: 600px;
     margin: 20px;
     
 }
-
+/*----------------------------------------------------*/
 .section100admin2 {
     width: 100%;
     height: fit-content;
 
-    
 }
+/*----------------------------------------------------*/
 .section100admin3 {
     width: 100%;
     height: 200px;
 
-    
 }
+/*----------------------------------------------------*/
 .section100mensaje {
     font-weight: 600;
     padding-top: 30px;
@@ -203,17 +216,39 @@ article {
     display: flex;
     
 }
+/*----------------------------------------------------*/
 .section100mensaje p{
     margin-left: 20px;
 }
-#botonmensaje{
-    margin-left: 20px;
-}
-
+/*----------------------------------------------------*/
 .section50 {
     height: 60vh;
     width: 50%;
 }
+/*--OTROS ELEMENTOS NAV--------------------------------------------------*/
+/*----------------------------------------------------*/
+#botonmensaje{
+    margin-left: 20px;
+}
+/*----------------------------------------------------*/
+.titulosection{
+    text-align: center;
+    position: relative;
+    top: 200px;
+    color: white;
+    font-size: 24pt;
+    font-weight: bold;
+}
+/*----------------------------------------------------*/
+.titulosection2{
+    text-align: center;
+    position: relative;
+    top: 200px;
+    color: black;
+    font-size: 24pt;
+    font-weight: bold;
+}
+/*----------------------------------------------------*/
 .divimagen{
     box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.6);
     height: 50vh;
@@ -224,13 +259,14 @@ article {
     display: inline-block;
 
 }
+/*----------------------------------------------------*/
 .imagenindex{
     padding-top: 20px;
     display:block;
     margin:auto;
     width: 20%;
 }
-
+/*----------------------------------------------------*/
 .divimagen p{
     margin-top: 20px;
     text-align: center;
@@ -238,11 +274,12 @@ article {
     font-weight: bold;
     font-size: 18pt;
 }
+/*----------------------------------------------------*/
 .divimagen .textopequeño{
     font-weight: initial;
     font-size: 12pt;
 }
-
+/*----------------------------------------------------*/
 .textopresentaciondiv{
     margin-left: 50px;
     color: black;
@@ -250,6 +287,7 @@ article {
     margin-top: 50px;
     font-weight: bold;
 }
+/*----------------------------------------------------*/
 .lineatexto {
     width: 10%;
     display: flex;
@@ -257,9 +295,9 @@ article {
     background-color: #007cb0;
     margin-top: 10px;
     margin-left: 50px;
-  }
-
-  .textopresentaciondivdesc{
+}
+/*----------------------------------------------------*/
+.textopresentaciondivdesc{
     margin-left: 50px;
     margin-right: 50px;
     color: black;
@@ -267,13 +305,14 @@ article {
     margin-top: 20px;
 
 }
-
+/*----------------------------------------------------*/
 .listadatos2{
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
     
 }
+/*----------------------------------------------------*/
 .listadatos2 li{
     text-align: center;
     padding-top: 10px;
@@ -281,12 +320,12 @@ article {
     font-weight: bold;
     font-size: 12pt;
 }
-
+/*----------------------------------------------------*/
 .centrarinicio{
     text-align: center;
     justify-content: center;
 }
-
+/*--LOGIN Y REGISTER--------------------------------------------------*/
 .bodylogin {
     background-color: #f4f2ee;
     display: flex;
@@ -296,6 +335,7 @@ article {
     margin: 0;
     
 }
+/*---------------------------------------------------*/
 .bodyregister {
     padding-top: 100px;
     background-color: #f4f2ee;
@@ -306,8 +346,7 @@ article {
     margin: 0;
     
 }
-
-
+/*----------------------------------------------------*/
 .loginregister-form {
     text-align: center;
     background-color: #fff; 
@@ -317,9 +356,7 @@ article {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
     margin: 0 auto; 
 }
-
-
-
+/*----------------------------------------------------*/
 .input-field {
     width: 100%;
     padding: 10px;
@@ -327,8 +364,7 @@ article {
     border: 1px solid #ccc; 
     border-radius: 8px; 
 }
-
-
+/*----------------------------------------------------*/
 .submit-button {
     background-color: rgba(34,45,90, 1);
     color: #fff;
@@ -340,46 +376,11 @@ article {
     font-size: 16px; 
     transition: background-color 0.3s;
 }
-
-
+/*----------------------------------------------------*/
 .submit-button:hover {
     background-color: rgb(0, 0, 0);
 }
-
-
-.tablaadmin{
-    text-align: center;
-    background-color: #fff; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-    margin: 0 auto;
-    width: auto;
-
-}
-
-.pregunta{
-    background-color: #fff; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-    margin: 100px;
-    width: auto;
-}
-
-.bold{
-
-    font-weight: bold;
-}
-.borrar{
-    color: white;
-    font-weight: 600;
-    border-style: none;
-    border-radius: 8px;
-    background-color: rgba(34,45,90, 1);
-    padding: 10px;
-
-}
+/*--BOTONES--------------------------------------------------*/
 #empezar{
     color: white;
     font-weight: 600;
@@ -388,6 +389,7 @@ article {
     background-color: rgba(34,45,90, 1);
     padding: 10px;
 }
+/*----------------------------------------------------*/
 #empezar:hover{
     font-weight: 600;
     border-style: none;
@@ -397,45 +399,7 @@ article {
     transition: all 0.3s ease;
 
 }
-.borrar:hover{
-    font-weight: 600;
-    border-style: none;
-    border-radius: 8px;
-    background-color: #007cb0;
-    padding: 10px;
-    transition: all 0.3s ease;
-
-}
-.tablaexamenes{
-    text-align: center;
-    background-color: #fff; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-    margin: 0 auto;
-    width: auto;
-}
-.admininputs{
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    text-align: center;
-}
-table th{
-    padding: 15px;
-    border-radius: 8px;
-    border-bottom: 2px solid rgba(34,45,90, 1);
-    
-}
-
-table td{
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f4f2ee;
-    font-weight: 600;
-    color: rgba(34,45,90, 1);
-}
-
+/*----------------------------------------------------*/
 #btnusuarios{
     color: white;
     font-weight: 600;
@@ -445,7 +409,7 @@ table td{
     padding: 10px;
 
 }
-
+/*----------------------------------------------------*/
 #btnusuarios:hover{
     font-weight: 600;
     border-style: none;
@@ -455,6 +419,7 @@ table td{
     transition: all 0.3s ease;
 
 }
+/*----------------------------------------------------*/
 #btnguardar{
     color: rgb(244, 203, 0);
     font-weight: 600;
@@ -464,6 +429,7 @@ table td{
     padding: 10px;
 
 }
+/*----------------------------------------------------*/
 #btnguardar:hover{
     font-weight: bold;
     border-style: none;
@@ -473,6 +439,7 @@ table td{
     transition: all 0.3s ease;
 
 }
+/*----------------------------------------------------*/
 .btneditar{
     color: rgb(0, 255, 0);
     font-weight: bold;
@@ -484,6 +451,7 @@ table td{
     margin: 5px;
 
 }
+/*----------------------------------------------------*/
 .btneditar:hover{
     font-weight: bold;
     border-style: none;
@@ -493,7 +461,7 @@ table td{
     transition: all 0.3s ease;
 
 }
-
+/*----------------------------------------------------*/
 .btnborrar{
     width: 50%;
     color: rgb(255, 0, 0);
@@ -506,6 +474,7 @@ table td{
     margin: 5px;
 
 }
+/*----------------------------------------------------*/
 .btnborrar:hover{
     font-weight: bold;
     border-style: none;
@@ -515,27 +484,7 @@ table td{
     transition: all 0.3s ease;
 
 }
-
-#dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    border-radius: 8px;
-    display: none;
-    position: absolute;
-    background-color: rgba(34,45,90, 0.7);
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
-    padding: 12px 16px;
-    z-index: 1;
-}
-
-#dropdown:hover .dropdown-content {
-    display: block;
-}
-
-
+/*----------------------------------------------------*/
 .btnanadirusuario{
     color: white;
     font-weight: 600;
@@ -545,6 +494,7 @@ table td{
     padding: 10px;
 
 }
+/*----------------------------------------------------*/
 .btnanadirusuario:hover{
     font-weight: 600;
     border-style: none;
@@ -554,6 +504,7 @@ table td{
     transition: all 0.3s ease;
 
 }
+/*----------------------------------------------------*/
 #btnlogout{
     color: white;
     font-weight: 600;
@@ -563,13 +514,13 @@ table td{
     padding: 6px;
 
 }
-
+/*----------------------------------------------------*/
 #btnlogout:hover{
     background-color: black;
     transition: all 0.3s ease;
 
 }
-
+/*----------------------------------------------------*/
 #btnlogin{
     color: white;
     font-weight: 600;
@@ -579,13 +530,13 @@ table td{
     padding: 6px;
 
 }
-
+/*----------------------------------------------------*/
 #btnlogin:hover{
     background-color: black;
     transition: all 0.3s ease;
 
 }
-
+/*----------------------------------------------------*/
 #btnexam{
     color: white;
     font-weight: 600;
@@ -595,13 +546,13 @@ table td{
     padding: 6px;
 
 }
-
+/*----------------------------------------------------*/
 #btnexam:hover{
     background-color: black;
     transition: all 0.3s ease;
 
 }
-
+/*----------------------------------------------------*/
 #btnregister{
     color: white;
     font-weight: 600;
@@ -611,59 +562,134 @@ table td{
     padding: 8px;
 
 }
-
+/*----------------------------------------------------*/
 #btnregister:hover{
     background-color: black;
     transition: all 0.3s ease;
 
 }
+/*----------------------------------------------------*/
+.borrar{
+    color: white;
+    font-weight: 600;
+    border-style: none;
+    border-radius: 8px;
+    background-color: rgba(34,45,90, 1);
+    padding: 10px;
+}
+/*----------------------------------------------------*/
+.borrar:hover{
+    font-weight: 600;
+    border-style: none;
+    border-radius: 8px;
+    background-color: #007cb0;
+    padding: 10px;
+    transition: all 0.3s ease;
 
+}
+/*----------------------------------------------------*/
+/*--PANELES ADMINISTRADOR--------------------------------------------------*/
+.tablaadmin{
+    text-align: center;
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+    width: auto;
+
+}
+/*----------------------------------------------------*/
+.pregunta{
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    margin: 100px;
+    width: auto;
+}
+/*----------------------------------------------------*/
+.bold{
+    font-weight: bold;
+}
+/*----------------------------------------------------*/
+.tablaexamenes{
+    text-align: center;
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+    width: auto;
+}
+/*----------------------------------------------------*/
+.admininputs{
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+}
+/*----------------------------------------------------*/
+table th{
+    padding: 15px;
+    border-radius: 8px;
+    border-bottom: 2px solid rgba(34,45,90, 1);
+    
+}
+/*----------------------------------------------------*/
+table td{
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f4f2ee;
+    font-weight: 600;
+    color: rgba(34,45,90, 1);
+}
+/*----------------------------------------------------*/
 .sub-submit{
     padding-top: 10px;
 }
-
+/*----------------------------------------------------*/
 .sub-submit a{
     color: rgba(34,45,90, 1);
 }
-
+/*----------------------------------------------------*/
 .checkbox{
     margin-top: 10px;
     margin-bottom: 10px;
 
 }
-
+/*----------------------------------------------------*/
 .texto404{
     font-weight: bold;
     text-align: center;
     margin-top: 200px;
     font-size: 24pt;
 }
-
-
+/*--CARROUSEL--------------------------------------------------*/
 .contenedorcarrousel {
     width: 100%;
     height: 300px;
     overflow: hidden;
-  }
-
-  .carrousel {
+}
+/*----------------------------------------------------*/
+.carrousel {
     display: flex;
     transition: transform 1s ease-in-out;
     height: 100%;
-  }
-
-  .elementocarrousel {
+}
+/*----------------------------------------------------*/
+.elementocarrousel {
     min-width: 100%;
     box-sizing: border-box;
-  }
-
-  .elementocarrousel img {
+}
+/*----------------------------------------------------*/
+.elementocarrousel img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: brightness(100%) contrast(80%) grayscale(30%);
-  }
-
+}
+/*----------------------------------------------------*/
 #textocarrousel{
     
     text-align: center;
@@ -673,36 +699,41 @@ table td{
     font-size: 24pt;
     font-weight: bold;
     z-index: 9999;
-
-
-
 }
+/*----------------------------------------------------*/
 
 
 
-/*FOOTER */
 
+
+
+/*---FOOTER---*/
+/*----------------------------------------------------*/
 footer{
     width: 100%;
     position: absolute;
     
 }
+/*----------------------------------------------------*/
 .footerdiv{
     box-shadow: 0px 5px 30px 0px rgba(0,0,0,0.7);
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: #191e28;
 }
+/*----------------------------------------------------*/
 .footerdiv .footerbottom{
     padding-top: 15px;
     padding-bottom: 15px;
     
 }
+/*----------------------------------------------------*/
 .footerdiv .redes{
     text-align: center;
     padding-bottom: 25px;
     color: black;
 }
+/*----------------------------------------------------*/
 .footerdiv .redes a{
     background-color: white;
     font-size: 20px;
@@ -716,12 +747,14 @@ footer{
     margin: 0 4px;
     opacity: 0.9;
 }
+/*----------------------------------------------------*/
 .footerdiv .redes a:hover{
     transition: all 0.3s ease;
     color: #007cb0;
     background-color: black;
     opacity: 1;
 }
+/*----------------------------------------------------*/
 .footerdiv ul{
     margin-top: 0;
     padding: 0;
@@ -731,19 +764,22 @@ footer{
     text-align: center;
     margin-bottom: 0;
 }
+/*----------------------------------------------------*/
 .footerdiv ul li a{
     color: rgba(255,255,255,0.8);
     
 }
+/*----------------------------------------------------*/
 .footerdiv ul li{
     display: inline-block;
     padding: 0 15px;
 }
+/*----------------------------------------------------*/
 .footerdiv ul li a:hover{
     color: rgba(255,255,255,1);
     transition: all 0.3s ease 0s;
 }
-
+/*----------------------------------------------------*/
 .footerbottom{
     font-weight: 600;
     padding-top: 15px;
@@ -752,13 +788,15 @@ footer{
     color: #f3f2ee;
     text-align: center;
 }
+/*----------------------------------------------------*/
 .footerbottom p{
     margin-left: 20px;
     margin-right: 20px;
 }
-
+/*----------------------------------------------------*/
 #logofooter{
     width: 15px;
     height: 15px;
 }
+/*----------------------------------------------------*/
 

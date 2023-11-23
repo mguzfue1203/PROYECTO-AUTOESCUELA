@@ -38,7 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     '<td><input type="text" id="nuevarespuesta1" class="admininputs" placeholder="Respuesta 1"></td>' +
                     '<td><input type="text" id="nuevarespuesta2" class="admininputs" placeholder="Respuesta 2"></td>' +
                     '<td><input type="text" id="nuevarespuesta3" class="admininputs" placeholder="Respuesta 3"></td>' +
-                    '<td><input type="text" id="nuevacorrecta" class="admininputs" placeholder="Respuesta"></td>' +
+                    '<td><select id="nuevacorrecta" class="admininputs">' + 
+                            '<option value="1">1</option>' +
+                            '<option value="2">2</option>' +
+                            '<option value="3">3</option>' +
+                            '</select>' + 
+                            '</td>' +
+                            
                     '<td>' +
                     '<button id="btnanadirpregunta" class="btnanadirusuario">Añadir</button>' +
                     '</td>' +
@@ -59,14 +65,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var respuesta1 = document.getElementById('nuevarespuesta1').value;
         var respuesta2 = document.getElementById('nuevarespuesta2').value;
         var respuesta3 = document.getElementById('nuevarespuesta3').value;
-        var respuesta_correcta = document.getElementById('nuevacorrecta').value;
+        var respuestacorrecta = document.getElementById('nuevacorrecta').value;
     
         var nuevapregunta = {
             enunciado: enunciado,
-            respuesta1: respuesta1,
-            respuesta2: respuesta2,
-            respuesta3: respuesta3,
-            respuesta_correcta: respuesta_correcta,
+            opciones: [respuesta1, respuesta2, respuesta3],
+            respuestacorrecta: respuestacorrecta - 1,
         };
     
         fetch('../Api/pregunta/solicitapreguntas.php', {

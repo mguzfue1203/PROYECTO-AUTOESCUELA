@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             '<option value="administrador">Administrador</option>' +
                             '<option value="profesor">Profesor</option>' +
                             '<option value="usuario">Usuario</option>' +
+                            '</select>' + 
                             '</td>' +
                             '<td>' +
                             '<button type="button" id="btnanadirusuario" class="btnanadirusuario">Añadir</button>' +
